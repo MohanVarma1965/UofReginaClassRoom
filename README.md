@@ -108,3 +108,4 @@ All commit messages must follow the [Semantic Commit Message](https://seesparkbo
 ## License
 
 The React Firebase Boilerplate is under the [MIT License](LICENSE)
+=======
