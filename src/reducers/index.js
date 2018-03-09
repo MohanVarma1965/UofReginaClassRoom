@@ -6,6 +6,8 @@ import auth from './auth';
 import notifications from './notifications';
 import routesPermissions from './routesPermissions';
 import user from './user';
+import registrationReducer from './registrationReducer';
+import loginReducer from './loginReducer';
 
 
 const rootReducer = combineReducers({
@@ -15,6 +17,8 @@ const rootReducer = combineReducers({
   routesPermissions,
   routing: routerReducer,
   user,
+  registrationReducer,
+  loginReducer
 });
 
 export default rootReducer;

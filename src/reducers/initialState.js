@@ -17,4 +17,14 @@ export default {
   user: {
     isAdmin: undefined,
   },
+  registration : {
+    registrationStatus: '',
+    registrationError :'',
+    registrationStatus: false
+  },
+  login : {
+    loginStatus: '',
+    loginError :'',
+    loginStatus: false
+  }
 };

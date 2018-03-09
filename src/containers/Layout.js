@@ -1,18 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Page, Row, Column } from 'hedron';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { OrderedSet } from 'immutable';
+import {Page, Row, Column} from 'hedron';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {OrderedSet} from 'immutable';
+import SidePannel from './SidePannel/index';
 
-import Header from '../components/Header';
 import Notifications from './Notifications';
-import { signInWithGitHub, signOut } from '../actions/auth';
+import {registerWithEmailPassword, signInwithEmailPassword, signOut} from '../actions/auth';
 
-const Content = styled(Column)`
-  background: rgba(0, 0, 0, .05);
-  border-radius: 5px;
-`;
+import PageHeader from '../containers/PageHeader';
 
 class Layout extends React.Component {
 
@@ -21,22 +18,23 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { auth, actions, loading, user } = this.props;
+    const {auth, actions, loading, user} = this.props;
     return (
-      <Page width='600px'>
-        <Header signIn={actions.signIn} signOut={actions.signOut} auth={auth} loading={loading} user={user} />
-        <Content>
-          <Column fluid>
-            {this.props.children}
-          </Column>
-        </Content>
-        <Notifications />
-      </Page>
+      <div className="layout-container">
+        <PageHeader/>
+        <div className="pannels-container">
+          <SidePannel />
+          <div className="mainPannel">
+              {this.props.children}
+          </div>
+        </div>
+        <Notifications/>
+      </div>
     );
   }
 }
 
-Layout.propTypes =  {
+Layout.propTypes = {
   actions: React.PropTypes.object.isRequired,
   auth: React.PropTypes.object.isRequired,
   children: React.PropTypes.object,
@@ -55,7 +53,8 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
-      signIn: signInWithGitHub,
+      register: registerWithEmailPassword,
+      signInwithEmailPassword: signInwithEmailPassword,
       signOut,
     }, dispatch)
   };

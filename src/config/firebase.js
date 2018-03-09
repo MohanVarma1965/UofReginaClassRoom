@@ -1,7 +1,8 @@
 export default {
-  apiKey: 'PUT_FIREBASE_API_KEY_HERE',
-  authDomain: 'PUT_FIREBASE_AUTH_DOMAIN_HERE',
-  databaseURL: 'PUT_FIREBASE_DATABASE_URL_HERE',
-  storageBucket: 'PUT_FIREBASE_STORAGE_BUCKET_HERE',
-  messagingSenderId: 'PUT_FIREBASE_MESSAGING_SENDER_ID_HERE',
+  apiKey: "AIzaSyDDYxWdxBzAhtIgWGAaMR_pkY24ak1o00A",
+  authDomain: "labtest-242ce.firebaseapp.com",
+  databaseURL: "https://labtest-242ce.firebaseio.com",
+  projectId: "labtest-242ce",
+  storageBucket: "labtest-242ce.appspot.com",
+  messagingSenderId: "738015510804"
 };

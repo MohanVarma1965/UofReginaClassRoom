@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
+import 'bootstrap/dist/css/bootstrap.css';
 
 // api
 import FirebaseApi from './api/firebase';
@@ -19,6 +20,7 @@ import App from './containers/App';
 // Store
 import initialState from './reducers/initialState';
 import configureStore from './store/configure'; //eslint-disable-line import/default
+import './main.css'
 
 // Styles
 import global from './styles/global';
@@ -32,6 +34,7 @@ const rootEl = document.getElementById('root');
 
 // Initialize Firebase Auth and then start the app
 store.dispatch(beginAjaxCall());
+
 FirebaseApi.initAuth()
   .then(
     user => {
@@ -65,6 +68,6 @@ FirebaseApi.initAuth()
   .catch(
     error => {
       store.dispatch(ajaxCallError());
-      console.error('error while initializing Firebase Auth'); // eslint-disable-line no-console
-      console.error(error); // eslint-disable-line no-console
+      console.log('error while initializing Firebase Auth'); // eslint-disable-line no-console
+      console.log(error); // eslint-disable-line no-console
     });

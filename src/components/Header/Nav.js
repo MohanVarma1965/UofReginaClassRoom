@@ -5,13 +5,15 @@ import styled from 'styled-components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link, IndexLink } from 'react-router';
-import { Row, Column } from 'hedron';
+//import { Row, Column } from 'hedron';
 
 import Button from '../Button';
 import J from '../J';
 import LoginLink from './LoginLink';
 import LogoutLink from './LogoutLink';
 import Nav from '../Nav';
+import RegisterLink from '../../containers/RegisterLink';
+import LoginWithEmailPassword from '../../containers/LoginWithEmailPassword';
 
 const PageHeader = styled.section`
   text-align: center;
@@ -21,29 +23,40 @@ const svg = styled.img`
   width: 250px;
 `;
 
-const Navigation = ({ signIn, signOut, auth, user }) => {
+const Navigation = ({ register, signInwithEmailPassword, signIn, signOut, auth, user }) => {
+  let registerLink = <RegisterLink action={register} />;
+
+  let loginWithUserNamePassword = <LoginWithEmailPassword signInwithEmailPassword={signInwithEmailPassword} signOut = {signOut} />;
+
+
   let loginLogoutLink = auth.isLogged
     ? <LogoutLink signOut={signOut} />
-    : <LoginLink action={signIn} />;
+    : <LoginLink action={signInwithEmailPassword} />;
   return (
     <Nav>
+{/*
       <IndexLink to='/' activeClassName='active'>
         <Button tooltip='Home' activeClassName='active'><J id='smiley_cat' s={18}/></Button>
       </IndexLink>
+
       <Link to='/about' activeClassName='active'>
         <Button tooltip='About' activeClassName='active'><J id='question' s={18}/></Button>
       </Link>
       <Link to='/protected' activeClassName='active'>
         <Button tooltip='Account' activeClassName='active'><J id='lock' s={18}/></Button>
-      </Link>
-      {loginLogoutLink}
+      </Link>*/}
+
+   {/*   {registerLink}*/}
+      {/*{loginWithUserNamePassword}*/}
+      {/*{loginLogoutLink}*/}
     </Nav>
   );
 };
 
 Navigation.propTypes = {
   auth: React.PropTypes.object.isRequired,
-  signIn: React.PropTypes.func.isRequired,
+  register: React.PropTypes.func.isRequired,
+  signInwithEmailPassword: React.PropTypes.func.isRequired,
   signOut: React.PropTypes.func.isRequired,
   user: React.PropTypes.object.isRequired,
 };
