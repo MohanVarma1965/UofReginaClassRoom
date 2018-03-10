@@ -26,5 +26,8 @@ export default {
     loginStatus: '',
     loginError :'',
     loginStatus: false
+  },
+  classRoom: {
+    currentClassRoom : 'default'
   }
 };

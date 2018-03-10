@@ -8,7 +8,7 @@ import Layout from './containers/Layout';
 import ProtectedPage from './containers/AccountPage';
 import Register from './containers/RegisterLink'
 import LoginWithEmailPassword from './containers/LoginWithEmailPassword';
-import CreateClassRoom from './containers/CreateClassRoom';
+import CreateQuestion from './containers/CreateQuestion';
 import LecturerHomePage from './containers/LecturerHomePage';
 
 export default function Routes(store) {
@@ -20,7 +20,7 @@ export default function Routes(store) {
       <Route path='studentJoin' component={AboutPage}/>
       <Route path='quiz' component={ProtectedPage}/>
       <Route path='lecturerHomepage' component={LecturerHomePage}/>
-      <Route path='createClassRoom' component={CreateClassRoom}/>
+      <Route path='createQuestion' component={CreateQuestion}/>
 
       CreateQuestions
       <Route path='results' component={ProtectedPage}/>

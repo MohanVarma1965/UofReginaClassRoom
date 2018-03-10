@@ -74,7 +74,6 @@ SidePannel.propTypes = {
 };
 
 function mapStateToProps(state) {
-  debugger;
   return {
     auth: state.auth,
     loginStatus: state.loginReducer.loginStatus,

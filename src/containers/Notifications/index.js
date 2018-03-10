@@ -8,7 +8,7 @@ class Notifications extends React.Component {
     return (
       <NotificationStack
         notifications={this.props.notifications.toArray()}
-        dismissAfter={2500}
+        dismissAfter={5000}
         onDismiss={notification => this.props.dispatch(dismiss(notification))}
       />
     );

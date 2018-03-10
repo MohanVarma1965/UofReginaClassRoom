@@ -3,10 +3,11 @@ import initialState from './initialState';
 
 export default function registrationReducer(state = initialState.registration, action) {
   switch (action.type) {
-    case types.USER_REGISTRATION_SUCCESS:
-      return Object.assign({}, state, { registrationStatus: true, registrationError: ''});
 
     case types.USER_REGISTRATION_ERROR:
+      return Object.assign({}, state, { registrationStatus: true, registrationError: ''});
+
+    case types.USER_REGISTRATION_SUCCESS:
       debugger;
 
       return Object.assign({}, state, {

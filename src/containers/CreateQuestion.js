@@ -1,10 +1,22 @@
 import React from 'react';
 import '../components/Header/header.css';
 import {connect} from 'react-redux';
-import {FormGroup, Form, ControlLabel, FormControl, HelpBlock, Col, Button} from 'react-bootstrap';
+import {
+  FormGroup,
+  Form,
+  ControlLabel,
+  FormControl,
+  HelpBlock,
+  Col,
+  Button,
+  ButtonToolbar,
+  DropdownButton,
+  MenuItem
+} from 'react-bootstrap';
 import {authLoggedInSuccess, hasLoginToken, signInwithEmailPassword, signOut} from "../actions/auth";
 import {bindActionCreators} from 'redux';
 import {providerLoginSuccess, userLoadedSuccess} from "../actions/user";
+import {saveQuiz, deleteRoom} from '../actions/lecturerActions'
 
 class CreateQuestion extends React.Component {
 
@@ -18,6 +30,7 @@ class CreateQuestion extends React.Component {
     this.optionC = this.optionC.bind(this);
     this.optionD = this.optionD.bind(this);
     this.answer = this.answer.bind(this);
+    this.deleteRoom = this.deleteRoom.bind(this);
     this.state = {
       questionDescription: '',
       optionA: '',
@@ -25,7 +38,8 @@ class CreateQuestion extends React.Component {
       optionC: '',
       optionD: '',
       answer: '',
-      questions: []
+      questions: [],
+      error: false
     }
   }
 
@@ -55,24 +69,42 @@ class CreateQuestion extends React.Component {
   }
 
 
-  nextQuestion(e) {
-    e.preventDefault();
+  nextQuestion() {
 
-    let options = {options: [this.state.optionA, this.state.optionB, this.state.optionC, this.state.optionD]},
-        answer = {answer: this.state.answer},
-        currentQuestion = {question: this.state.questionDescription, options: options, answer: answer};
+    let error = (this.state.questionDescription && this.state.optionA && this.state.optionB && this.state.optionC && this.state.optionD && this.state.answer) ? false : true;
+    this.setState({error : error});
+    if(error) {
+      return;
+    }
+
+    let currentQuestion = {
+      question: this.state.questionDescription,
+      options: [this.state.optionA, this.state.optionB, this.state.optionC, this.state.optionD],
+      answer: this.state.answer
+    };
 
     this.state.questions.push(currentQuestion);
 
+    debugger;
+    console.log(this.state.questions);
     // Reset the state to normal
-    this.setState ({questionDescription: '', optionA: '', optionB: '', optionC: '', optionD: '', answer: ''})
+    this.setState({questionDescription: '', optionA: '', optionB: '', optionC: '', optionD: '', answer: '', error :false})
   }
 
   saveQuiz(e) {
+    this.setState({error: false});
     e.preventDefault();
+
+    this.nextQuestion();
+    console.log(this.state.questions);
+    this.props.actions.saveQuiz(this.state.questions, this.props.currentClassRoom);
 
     console.log("this is to save the quiz");
 
+  }
+
+  deleteRoom() {
+    this.props.actions.deleteRoom(this.props.currentClassRoom);
   }
 
   render() {
@@ -80,65 +112,74 @@ class CreateQuestion extends React.Component {
 
       <Form horizontal onSubmit={this.saveQuiz}>
 
+        <FormGroup controlId="formHorizontalcurrentRoom">
+          <Col componentClass={ControlLabel} sm={10}> Class Room Number {this.props.currentClassRoom} </Col>
+          <Col componentClass={ControlLabel} sm={10}> Question Number {this.state.questions.length+1} </Col>
+
+        </FormGroup>
+
         <FormGroup controlId="formHorizontalQuestionDescription">
-          <Col componentClass={ControlLabel} sm={2}> Enter Question </Col>
+          <Col componentClass={ControlLabel} sm={6}> Enter Question Description</Col>
           <Col sm={10}>
             <FormControl type="text" value={this.state.questionDescription} onChange={this.questionDescription}
-                         placeholder="Question Description"/>
+                         placeholder="Question Description" required/>
           </Col>
         </FormGroup>
 
+        <FormGroup controlId="formHorizontalOptionDescription">
+          <Col componentClass={ControlLabel} sm={10}> Enter Option Descriptions </Col>
+        </FormGroup>
+
         <FormGroup controlId="formHorizontalOptionA">
-          <Col componentClass={ControlLabel} sm={2}> Enter Option A </Col>
           <Col sm={10}>
             <FormControl type="text" value={this.state.optionA} onChange={this.optionA}
-                         placeholder="Option Description"/>
+                         placeholder="Description For Option A" required/>
           </Col>
         </FormGroup>
 
         <FormGroup controlId="formHorizontalOptionB">
-          <Col componentClass={ControlLabel} sm={2}> Enter Option B </Col>
           <Col sm={10}>
             <FormControl type="text" value={this.state.optionB} onChange={this.optionB}
-                         placeholder="Option Description"/>
+                         placeholder="Description For Option B" required/>
           </Col>
         </FormGroup>
 
         <FormGroup controlId="formHorizontalOptionC">
-          <Col componentClass={ControlLabel} sm={2}> Enter Option C </Col>
           <Col sm={10}>
             <FormControl type="text" value={this.state.optionC} onChange={this.optionC}
-                         placeholder="Option Description"/>
+                         placeholder="Description For Option C" required/>
           </Col>
         </FormGroup>
 
         <FormGroup controlId="formHorizontalOptionD">
-          <Col componentClass={ControlLabel} sm={2}> Enter Option A </Col>
           <Col sm={10}>
             <FormControl type="text" value={this.state.optionD} onChange={this.optionD}
-                         placeholder="Option Description"/>
+                         placeholder="Description For Option D" required/>
           </Col>
         </FormGroup>
-
 
         <FormGroup controlId="formHorizontalAnswer">
-          <Col componentClass={ControlLabel} sm={2}> Enter Answer Option </Col>
+          <Col componentClass={ControlLabel} sm={10}> Select Correct Answer
+            <select required className="questionFormSelect" value={this.state.answer} onChange={this.answer}>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+            </select>
+          </Col>
+        </FormGroup>
+
+        <FormGroup>
           <Col sm={10}>
-            <FormControl type="text" value={this.state.answer} onChange={this.answer}
-                         placeholder="Anser Option"/>
+            <div className="error"> {this.state.error ? "*Please enter all fields" : "" }</div>
           </Col>
         </FormGroup>
 
         <FormGroup>
-          <Col smOffset={2} sm={10}>
-            <Button onClick={this.nextQuestion}> Next </Button>
-          </Col>
-        </FormGroup>
-
-
-        <FormGroup>
-          <Col smOffset={2} sm={10}>
-            <Button type="submit"> Save Quiz </Button>
+          <Col sm={10}>
+            <Button onClick={this.nextQuestion} className="questionFormButton"> Next Question </Button>
+            <Button type="submit" className="questionFormButton save"> Save Quiz </Button>
+            <Button className="questionFormButton quit" onClick={this.deleteRoom}> Delete Quiz and Room </Button>
           </Col>
         </FormGroup>
 
@@ -156,12 +197,15 @@ function mapStateToProps(state) {
   return {
     auth: state.auth,
     user: state.user,
+    currentClassRoom: state.classRoomReducer.currentClassRoom
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
+      saveQuiz,
+      deleteRoom
     }, dispatch)
   };
 }

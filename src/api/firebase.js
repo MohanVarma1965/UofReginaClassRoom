@@ -30,24 +30,29 @@ class FirebaseApi {
     return firebase.auth().signOut();
   }
 
-  static databasePush(path, value) {
+  static questionsPushToDatabase(questions, currentClassRoom) {
+
+    let user = firebase.auth().currentUser;
     debugger;
+
     return new Promise((resolve, reject) => {
       firebase
         .database()
-        .ref(path)
-        .push(value, (error) => {
+        .ref('users/classRooms').child(currentClassRoom).child('questions')
+        .set(questions, (error) => {
           if (error) {
             debugger;
+            console.log("Error in data setting");
+            console.log(error);
             reject(error);
           } else {
             debugger;
-            resolve();
+            console.log("data set correctly");
+            resolve("success");
           }
         });
     });
   }
-
 
   static cloudDatabasePush(value) {
 
@@ -76,11 +81,36 @@ class FirebaseApi {
           } else {
             debugger;
             console.log("data set correctly");
-            resolve("success");
+            resolve(classRoom);
           }
         });
     });
   }
+
+
+  static deleteRoom(classRoom) {
+
+    return new Promise((resolve, reject) => {
+      firebase
+        .database()
+        .ref('users/classRooms').child(classRoom)
+        .remove( (error) => {
+          if (error) {
+            debugger;
+            console.log("Error in data setting");
+            console.log(error);
+            reject(error);
+          } else {
+            debugger;
+            console.log("data set correctly");
+            resolve(classRoom);
+          }
+        });
+    });
+  }
+
+
+
 
 
   static GetValueByKeyOnce(path, key) {
