@@ -10,6 +10,8 @@ import Register from './containers/RegisterLink'
 import LoginWithEmailPassword from './containers/LoginWithEmailPassword';
 import CreateQuestion from './containers/CreateQuestion';
 import LecturerHomePage from './containers/LecturerHomePage';
+import JoinClassRoom from './containers/JoinClassRoom';
+import GetandAnswerQuestions from './containers/GetandAnswerQuestions'
 
 export default function Routes(store) {
   return (
@@ -17,10 +19,11 @@ export default function Routes(store) {
       <IndexRoute component={LoginWithEmailPassword}/>
       <Route path='register' component={Register}/>
       <Route path='login' component={LoginWithEmailPassword}/>
-      <Route path='studentJoin' component={AboutPage}/>
+      <Route path='joinClassRoom' component={JoinClassRoom}/>
       <Route path='quiz' component={ProtectedPage}/>
       <Route path='lecturerHomepage' component={LecturerHomePage}/>
       <Route path='createQuestion' component={CreateQuestion}/>
+      <Route path='getandAnswerQuestions' component={GetandAnswerQuestions}/>
 
       CreateQuestions
       <Route path='results' component={ProtectedPage}/>

@@ -46,7 +46,6 @@ class FirebaseApi {
             console.log(error);
             reject(error);
           } else {
-            debugger;
             console.log("data set correctly");
             resolve("success");
           }
@@ -65,7 +64,8 @@ class FirebaseApi {
       owner: user.uid,
       saved: false,
       hosted: false,
-      questions: []
+      questions: [],
+      studentIDs: []
     }
 
     return new Promise((resolve, reject) => {
@@ -74,12 +74,10 @@ class FirebaseApi {
         .ref('users/classRooms').child(classRoom)
         .set(valuemod, (error) => {
           if (error) {
-            debugger;
             console.log("Error in data setting");
             console.log(error);
             reject(error);
           } else {
-            debugger;
             console.log("data set correctly");
             resolve(classRoom);
           }
@@ -109,8 +107,65 @@ class FirebaseApi {
     });
   }
 
+  static joinClassRoom(studentID, roomNumber) {
+
+    let modifiedValue = {
+          studentID : studentID
+    }
+
+    return new Promise((resolve, reject) => {
+      firebase
+        .database()
+        .ref(`users/classRooms/${roomNumber}`).child(`studentIDs/${studentID}`)
+        .set(modifiedValue, (error) => {
+          if (error) {
+            debugger;
+            console.log(error);
+            reject(error);
+          } else {
+            console.log("data set correctly");
+            resolve(roomNumber);
+          }
+        });
+    });
+  }
 
 
+  static submitQuiz(studentID, roomNumber, answers) {
+
+    return new Promise((resolve, reject) => {
+      firebase
+        .database()
+        .ref(`users/classRooms/${roomNumber}/studentIDs/${studentID}/answers`)
+        .set(answers, (error) => {
+          if (error) {
+            debugger;
+            console.log(error);
+            reject(error);
+          } else {
+            console.log("Answers are posted");
+            resolve(roomNumber);
+          }
+        });
+    });
+  }
+
+
+
+
+  static databaseQuestionsFetch(studentID, roomNumber) {
+
+    return new Promise((resolve, reject) => {
+      firebase
+        .database()
+        .ref(`users/classRooms/${roomNumber}/questions`)
+        .on('value', function(snapshot) {
+        debugger;
+        resolve(snapshot.val());
+        // ...
+      });
+    });
+  }
 
 
   static GetValueByKeyOnce(path, key) {
@@ -140,7 +195,6 @@ class FirebaseApi {
 
 
   static registerWithEmailPassword(email, password, displayName) {
-    debugger;
     return firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
       firebase.auth().currentUser.updateProfile({displayName: displayName});
       console.log("firebase.database().currentUser");
@@ -149,7 +203,6 @@ class FirebaseApi {
   }
 
   static signInwithEmailPassword(email, password) {
-    debugger;
     return firebase.auth().signInWithEmailAndPassword(email, password)
   }
 

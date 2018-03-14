@@ -36,7 +36,7 @@ class LecturerHomePage extends React.Component {
           <Col componentClass={ControlLabel} sm={2}> Enter Room Number </Col>
           <Col sm={10}>
             <FormControl type="text" value={this.state.classRoomNumber} onChange={this.enterRoomNo}
-                         placeholder="Room Number"/>
+                         placeholder="Room Number" required/>
           </Col>
         </FormGroup>
 

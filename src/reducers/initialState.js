@@ -28,6 +28,8 @@ export default {
     loginStatus: false
   },
   classRoom: {
-    currentClassRoom : 'default'
+    currentClassRoom : 'default',
+    questions:'',
+    studentId:''
   }
 };

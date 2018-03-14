@@ -9,6 +9,7 @@ import user from './user';
 import registrationReducer from './registrationReducer';
 import loginReducer from './loginReducer';
 import classRoomReducer from './classRoomReducer';
+import  classJoinReducer from './classJoinReducer';
 
 
 const rootReducer = combineReducers({
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   user,
   registrationReducer,
   loginReducer,
-  classRoomReducer
+  classRoomReducer,
+  classJoinReducer
 });
 
 export default rootReducer;
