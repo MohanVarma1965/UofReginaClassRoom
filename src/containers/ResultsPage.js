@@ -14,7 +14,7 @@ import {
 import {bindActionCreators} from 'redux';
 import {submitQuiz} from '../actions/studentActions'
 
-class GetandAnswerQuestions extends React.Component {
+class ResultsPage extends React.Component {
 
   constructor(props) {
     super(props);
@@ -105,7 +105,7 @@ class GetandAnswerQuestions extends React.Component {
   }
 };
 
-GetandAnswerQuestions.propTypes = {};
+ResultsPage.propTypes = {};
 
 function mapStateToProps(state) {
   debugger;
@@ -125,4 +125,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GetandAnswerQuestions);
+export default connect(mapStateToProps, mapDispatchToProps)(ResultsPage);

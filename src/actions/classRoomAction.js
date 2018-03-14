@@ -9,9 +9,9 @@ export function classCreationCallError(error) {
   return { type: types.CLASS_CREATION_ERROR };
 }
 
-export function classJoinCallSuccess(result, currentClassRoom, studentID) {
+export function classJoinCallSuccess(questions, currentClassRoom, studentID) {
   debugger;
-  return { type: types.CLASS_JOIN_SUCCESS, payload : {result, currentClassRoom,studentID }};
+  return { type: types.CLASS_JOIN_SUCCESS, payload : {questions, currentClassRoom,studentID }};
 }
 
 export function classJoinCallError(error) {

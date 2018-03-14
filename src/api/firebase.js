@@ -131,12 +131,11 @@ class FirebaseApi {
   }
 
 
-  static submitQuiz(studentID, roomNumber, answers) {
-
+  static submitQuiz(currentClassRoom, studentID, answers) {
     return new Promise((resolve, reject) => {
       firebase
         .database()
-        .ref(`users/classRooms/${roomNumber}/studentIDs/${studentID}/answers`)
+        .ref(`users/classRooms/${currentClassRoom}/studentIDs/${studentID}/answers`)
         .set(answers, (error) => {
           if (error) {
             debugger;
@@ -144,7 +143,7 @@ class FirebaseApi {
             reject(error);
           } else {
             console.log("Answers are posted");
-            resolve(roomNumber);
+            resolve(currentClassRoom);
           }
         });
     });

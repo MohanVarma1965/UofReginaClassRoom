@@ -47,11 +47,6 @@ class JoinClassRoom extends React.Component {
 
       <Form horizontal onSubmit={this.joinRoom}>
 
-        <FormGroup controlId="formHorizontalcurrentRoom">
-          <Col componentClass={ControlLabel} sm={10}> Class Room Number {this.props.currentClassRoom} </Col>
-          <Col componentClass={ControlLabel} sm={10}> Question Number </Col>
-        </FormGroup>
-
         <FormGroup controlId="formHorizontalStudentID">
           <Col componentClass={ControlLabel} sm={10}> Enter StudentID</Col>
           <Col sm={10}>
