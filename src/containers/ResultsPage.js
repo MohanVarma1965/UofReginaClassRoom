@@ -13,6 +13,7 @@ import {
 } from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
 import {submitQuiz} from '../actions/studentActions'
+import { ColumnChart, PieChart } from 'react-chartkick';
 
 class ResultsPage extends React.Component {
 

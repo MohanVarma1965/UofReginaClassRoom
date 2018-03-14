@@ -7,8 +7,8 @@ import {bindActionCreators} from 'redux';
 import {push} from "react-router-redux";
 import {providerLoginSuccess, userLoadedSuccess} from "../actions/user";
 import {beginAjaxCall} from "../actions/ajaxStatus";
-import { Link, Redirect } from 'react-router';
-import {createRoom} from '../actions/lecturerActions';
+import {Link, Redirect} from 'react-router';
+import {createRoom, getAllClasses} from '../actions/lecturerActions';
 
 class LecturerHomePage extends React.Component {
 
@@ -16,6 +16,7 @@ class LecturerHomePage extends React.Component {
     super(props);
     this.createRoom = this.createRoom.bind(this);
     this.enterRoomNo = this.enterRoomNo.bind(this);
+    this.getAllClasses = this.getAllClasses.bind(this);
     this.state = {classRoomNumber: ''}
   }
 
@@ -28,25 +29,58 @@ class LecturerHomePage extends React.Component {
     this.setState({classRoomNumber: event.target.value});
   }
 
+  getAllClasses(e) {
+    e.preventDefault();
+    this.props.actions.getAllClasses();
+  }
+
   render() {
     return (
+      <div>
+        <Form horizontal onSubmit={this.createRoom}>
+          <FormGroup controlId="formHorizontalRoomNumber">
+            <Col componentClass={ControlLabel} sm={2}> Enter Room Number </Col>
+            <Col sm={10}>
+              <FormControl type="text" value={this.state.classRoomNumber} onChange={this.enterRoomNo}
+                           placeholder="Room Number" required/>
+            </Col>
+          </FormGroup>
 
-      <Form horizontal onSubmit={this.createRoom}>
-        <FormGroup controlId="formHorizontalRoomNumber">
-          <Col componentClass={ControlLabel} sm={2}> Enter Room Number </Col>
-          <Col sm={10}>
-            <FormControl type="text" value={this.state.classRoomNumber} onChange={this.enterRoomNo}
-                         placeholder="Room Number" required/>
-          </Col>
-        </FormGroup>
+          <FormGroup>
+            <Col smOffset={2} sm={10}>
+              <Button type="submit"> Create Room </Button>
+            </Col>
+          </FormGroup>
+        </Form>
 
-        <FormGroup>
-          <Col smOffset={2} sm={10}>
-            <Button type="submit"> Create Room </Button>
-          </Col>
-        </FormGroup>
+        <Form onSubmit={this.getAllClasses}>
+          <FormGroup controlId="GetListOfClasses">
+            <Col componentClass={ControlLabel} sm={2}> In order to see all the classes available click on the below link </Col>
+            <Col smOffset={2} sm={10}>
+              <Button type="submit"> Get Rooms </Button>
+            </Col>
+          </FormGroup>
+        </Form>
 
-      </Form>
+        {this.props.listOfAllClasses ?
+          <Form onSubmit={this.getResults}>
+            <FormGroup controlId="GetListOfClasses">
+              <Col componentClass={ControlLabel} sm={2}> Click on each room to see the Students Performance </Col>
+
+              <Col smOffset={2} sm={10}>
+                {this.props.listOfAllClasses.map((individualClass) => {
+                  this.props.listOfAllClasses.owner === this.state.user.uid ?
+                    <Button type="submit">this.props.listOfAllClasses.RoomValue</Button> : ""
+                })}
+
+              </Col>
+
+
+            </FormGroup>
+          </Form>
+          : ""
+        }
+      </div>
     );
   }
 };
@@ -62,6 +96,7 @@ function mapStateToProps(state) {
     loginStatus: state.loginReducer.loginStatus,
     loginError: state.loginReducer.loginError,
     user: state.user,
+    listOfAllClasses: state.classRoomReducer.listOfAllClasses
   };
 }
 
@@ -69,6 +104,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
       createRoom,
+      getAllClasses
     }, dispatch)
   };
 }

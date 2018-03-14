@@ -19,3 +19,15 @@ export function classJoinCallError(error) {
   return { type: types.CLASS_JOIN_ERROR, payload :error };
 }
 
+
+export function getAllClassesCallSuccess(listofAllClasses) {
+  debugger;
+  return { type: types.GET_ALL_CLASSES_SUCCESS, payload :listofAllClasses };
+}
+
+
+export function getAllClassesCallError(error) {
+  debugger;
+  return { type: types.GET_ALL_CLASSES_ERROR, payload :error };
+}
+

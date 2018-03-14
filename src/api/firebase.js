@@ -85,6 +85,24 @@ class FirebaseApi {
     });
   }
 
+  static getAllClasses() {
+
+    let userID = firebase.auth().currentUser.uid;
+    debugger;
+
+    return new Promise((resolve, reject) => {
+      firebase
+        .database()
+        .ref('users/classRooms/')
+        .on('value', function(snapshot) {
+          debugger;
+          resolve(snapshot.val());
+          // ...
+        });
+    });
+  }
+
+
 
   static deleteRoom(classRoom) {
 
@@ -150,8 +168,6 @@ class FirebaseApi {
   }
 
 
-
-
   static databaseQuestionsFetch(studentID, roomNumber) {
 
     return new Promise((resolve, reject) => {
@@ -165,6 +181,9 @@ class FirebaseApi {
       });
     });
   }
+
+
+
 
 
   static GetValueByKeyOnce(path, key) {

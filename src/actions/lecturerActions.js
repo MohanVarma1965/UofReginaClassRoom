@@ -5,7 +5,7 @@ import {ajaxCallError, beginAjaxCall} from './ajaxStatus';
 import {notify} from './notifications';
 import {providerLoginSuccess, userLoadedSuccess, userCreated} from './user';
 import CreateClassRoom from "../containers/CreateClassRoom";
-import {classCreationCallSuccess} from '../actions/classRoomAction'
+import {classCreationCallSuccess, getAllClassesCallSuccess} from '../actions/classRoomAction'
 
 
 export function createRoom(roomNumber) {
@@ -28,6 +28,30 @@ export function createRoom(roomNumber) {
       });
   };
 }
+
+export function getAllClasses() {
+  debugger;
+  return (dispatch) => {
+    dispatch(beginAjaxCall());
+    return firebaseApi.getAllClasses()
+      .then((listofClasses) => {
+        debugger;
+        //dispatch(notify(`Your current class room ${currentClassRoom} is Deleted`));
+        //dispatch(push('/resultsPage'));
+
+        dispatch(getAllClassesCallSuccess(listofClasses));
+
+          //dispatch(authLoggedIn());
+      })
+      .catch(error => {
+        debugger;
+        // dispatch(loginCallError(error));
+        console.log(error);
+      });
+  };
+}
+
+
 
 
 export function saveQuiz(questions, currentClassRoom) {
