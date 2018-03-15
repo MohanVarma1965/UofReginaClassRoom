@@ -17,7 +17,8 @@ class LecturerHomePage extends React.Component {
     this.createRoom = this.createRoom.bind(this);
     this.enterRoomNo = this.enterRoomNo.bind(this);
     this.getAllClasses = this.getAllClasses.bind(this);
-    this.state = {classRoomNumber: ''}
+    this.displayAllEligibleClasses = this.displayAllEligibleClasses.bind(this);
+    this.state = {classRoomNumber: '', showGetAllRoomButton : true}
   }
 
   createRoom(e) {
@@ -34,10 +35,27 @@ class LecturerHomePage extends React.Component {
     this.props.actions.getAllClasses();
   }
 
+  displayAllEligibleClasses() {
+    debugger;
+    let listOfClasses = this.props.listOfAllClasses;
+    let userID = this.props.user.uid;
+
+    var data = [];
+
+    for(var prop in listOfClasses) {
+      if (listOfClasses[prop].owner == userID) {
+        data.push(<Button type="submit">{prop}</Button>)
+        this.setState({showGetAllRoomButton : false})
+      }
+    }
+    debugger;
+    return data;
+  }
+
   render() {
     return (
       <div>
-        <Form horizontal onSubmit={this.createRoom}>
+        <Form horizontal onSubmit={this.getAllClasses}>
           <FormGroup controlId="formHorizontalRoomNumber">
             <Col componentClass={ControlLabel} sm={2}> Enter Room Number </Col>
             <Col sm={10}>
@@ -54,27 +72,24 @@ class LecturerHomePage extends React.Component {
         </Form>
 
         <Form onSubmit={this.getAllClasses}>
-          <FormGroup controlId="GetListOfClasses">
-            <Col componentClass={ControlLabel} sm={2}> In order to see all the classes available click on the below link </Col>
+          {this.state.showGetAllRoomButton ? <FormGroup controlId="GetListOfClasses">
+            <Col componentClass={ControlLabel} sm={2}> In order to see all the classes available click on the below
+              link </Col>
             <Col smOffset={2} sm={10}>
               <Button type="submit"> Get Rooms </Button>
             </Col>
-          </FormGroup>
+          </FormGroup> : "" }
         </Form>
 
         {this.props.listOfAllClasses ?
           <Form onSubmit={this.getResults}>
             <FormGroup controlId="GetListOfClasses">
-              <Col componentClass={ControlLabel} sm={2}> Click on each room to see the Students Performance </Col>
+              <Col componentClass={ControlLabel} sm={10}> Click on each room to see the Students Performance </Col>
 
               <Col smOffset={2} sm={10}>
-                {this.props.listOfAllClasses.map((individualClass) => {
-                  this.props.listOfAllClasses.owner === this.state.user.uid ?
-                    <Button type="submit">this.props.listOfAllClasses.RoomValue</Button> : ""
-                })}
 
+                {this.displayAllEligibleClasses()}
               </Col>
-
 
             </FormGroup>
           </Form>
