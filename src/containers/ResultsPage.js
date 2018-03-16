@@ -1,108 +1,60 @@
 import React from 'react';
 import '../components/Header/header.css';
 import {connect} from 'react-redux';
-import {
-  FormGroup,
-  Form,
-  ControlLabel,
-  FormControl,
-  Col,
-  Button,
-  ButtonToolbar,
-  Radio
-} from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
-import {submitQuiz} from '../actions/studentActions'
-import { ColumnChart, PieChart } from 'react-chartkick';
+import {ColumnChart, PieChart} from 'react-chartkick';
+window.Chart = require('chart.js');
 
 class ResultsPage extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      answer: '',
-      error: false,
       answersArray: []
     }
-    this.submitQuiz = this.submitQuiz.bind(this);
-    this.answerSelected = this.answerSelected.bind(this);
-    this.renderQuestions = this.renderQuestions.bind(this);
-    this.checkForError = this.checkForError.bind(this);
+    this.renderResults = this.renderResults.bind(this);
   }
 
-  checkForError() {
-    let answerArray = this.state.answersArray;
-    let noOfQuestions = this.props.questions.length;
-
-    for(let i=0; i< noOfQuestions; i++ ){
-      if(!answerArray[i]){
-          return true;
-      }
-    }
-    return false;
-  }
-
-  answerSelected(e) {
+  renderResults() {
     debugger;
-    let indexes = e.target.value ? e.target.value.split(',') : "";
-    let questionIndex = indexes[0];
-    let optionIndex = indexes[1];
+    let currentUrl = window.location.href;
+    let currentRoom = currentUrl.split('?') ? currentUrl.split('?')[1] : "";
 
-    let answerArrayL = this.state.answersArray;
-    answerArrayL[questionIndex] = optionIndex;
-    this.setState({answersArray: answerArrayL});
-  }
+    let chartArray = [];
+    let classData = this.props.listOfAllClasses[currentRoom];
 
-  submitQuiz(e) {
-    e.preventDefault();
-    let error = this.checkForError()
-    this.setState({error : error});
+    console.log(classData);
+    let questions = classData.questions;
+    let answersArray = [];
+    let studentResponse = [];
 
-    if(error) {
-      return
+    let studentIDs = classData.studentIDs;
+
+
+    questions.map((question, index) => {
+      answersArray.push(question.answer);
+    })
+
+    for (var studentID in studentIDs) {
+      let correctAnswers = 0;
+      if (studentIDs[studentID] && studentIDs[studentID].answers) {
+        studentIDs[studentID].answers.map((answer, index) => {
+          if (answer == answersArray[index]) {
+            correctAnswers++;
+          }
+        })
+      }
+      studentResponse.push([studentID, correctAnswers]);
     }
-    this.props.actions.submitQuiz(this.props.currentClassRoom,this.props.studentID,this.state.answersArray);
-  }
 
-
-  renderQuestions() {
-    return <Form horizontal onSubmit={this.submitQuiz}>
-      {this.props.questions.map((question, questionIndex) => {
-        return (
-          <Form>
-            <FormGroup>
-              <Col componentClass={ControlLabel} sm={10}> {questionIndex + 1 + ")"} {question.question} </Col>
-              <Col smOffset={4} sm={10}>
-                {question.options.map((option, optionIndex) => {
-                  return (<Radio required name="radioGroup" onChange={this.answerSelected}
-                                 value={questionIndex + ',' + optionIndex}>
-                    {option}
-                  </Radio>)
-                })}
-              </Col>
-            </ FormGroup>
-          </Form>)
-      })}
-
-      <FormGroup>
-        <Col sm={10}>
-          <div className="error"> {this.state.error ? "*Please enter all fields" : "" }</div>
-        </Col>
-      </FormGroup>
-
-      <FormGroup>
-        <Col smOffset={2} sm={10}>
-          <Button type="submit"> Submit Quiz </Button>
-        </Col>
-      </FormGroup>
-    </Form>
+    return studentResponse;
   }
 
   render() {
     debugger;
-    let questions = this.props.questions ? this.renderQuestions() :
-      <div> There are no questions to display, please re check and join the correct class room</div>;
-    return questions
+    debugger;
+    console.log(this.props.listOfAllClasses);
+    return (<ColumnChart  discrete={true} stacked={true} xtitle="StudentIDs" ytitle="Correct Answers" download={true} data={this.renderResults() }/>)
   }
 };
 
@@ -111,18 +63,13 @@ ResultsPage.propTypes = {};
 function mapStateToProps(state) {
   debugger;
   return {
-    questions: state.classJoinReducer.questions,
-    currentClassRoom: state.classJoinReducer.currentClassRoom,
-    studentID: state.classJoinReducer.studentID,
-
+    listOfAllClasses: state.classRoomReducer.listOfAllClasses
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({
-      submitQuiz
-    }, dispatch)
+    actions: bindActionCreators({}, dispatch)
   };
 }
 

@@ -11,7 +11,8 @@ import LoginWithEmailPassword from './containers/LoginWithEmailPassword';
 import CreateQuestion from './containers/CreateQuestion';
 import LecturerHomePage from './containers/LecturerHomePage';
 import JoinClassRoom from './containers/JoinClassRoom';
-import GetandAnswerQuestions from './containers/GetandAnswerQuestions'
+import GetandAnswerQuestions from './containers/GetandAnswerQuestions';
+import ResultsPage from './containers/ResultsPage';
 
 export default function Routes(store) {
   return (
@@ -24,6 +25,7 @@ export default function Routes(store) {
       <Route path='lecturerHomepage' component={LecturerHomePage}/>
       <Route path='createQuestion' component={CreateQuestion}/>
       <Route path='getandAnswerQuestions' component={GetandAnswerQuestions}/>
+      <Route path='resultsPage' component={ResultsPage}/>
 
       CreateQuestions
       <Route path='results' component={ProtectedPage}/>

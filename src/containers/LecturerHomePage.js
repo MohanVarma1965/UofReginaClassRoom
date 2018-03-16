@@ -32,20 +32,22 @@ class LecturerHomePage extends React.Component {
 
   getAllClasses(e) {
     e.preventDefault();
+    this.setState({showGetAllRoomButton : false});
     this.props.actions.getAllClasses();
   }
+
 
   displayAllEligibleClasses() {
     debugger;
     let listOfClasses = this.props.listOfAllClasses;
     let userID = this.props.user.uid;
 
-    var data = [];
+    let data = [];
 
     for(var prop in listOfClasses) {
       if (listOfClasses[prop].owner == userID) {
-        data.push(<Button type="submit">{prop}</Button>)
-        this.setState({showGetAllRoomButton : false})
+        let resultsPage =`/resultsPage?${prop}`;
+        data.push(<Link to = {`${resultsPage}`} >{prop}</Link>)
       }
     }
     debugger;
@@ -55,7 +57,7 @@ class LecturerHomePage extends React.Component {
   render() {
     return (
       <div>
-        <Form horizontal onSubmit={this.getAllClasses}>
+        <Form horizontal onSubmit={this.createRoom}>
           <FormGroup controlId="formHorizontalRoomNumber">
             <Col componentClass={ControlLabel} sm={2}> Enter Room Number </Col>
             <Col sm={10}>
@@ -73,7 +75,7 @@ class LecturerHomePage extends React.Component {
 
         <Form onSubmit={this.getAllClasses}>
           {this.state.showGetAllRoomButton ? <FormGroup controlId="GetListOfClasses">
-            <Col componentClass={ControlLabel} sm={2}> In order to see all the classes available click on the below
+            <Col componentClass={ControlLabel} sm={10}> In order to see all the classes available click on the below
               link </Col>
             <Col smOffset={2} sm={10}>
               <Button type="submit"> Get Rooms </Button>
@@ -85,12 +87,9 @@ class LecturerHomePage extends React.Component {
           <Form onSubmit={this.getResults}>
             <FormGroup controlId="GetListOfClasses">
               <Col componentClass={ControlLabel} sm={10}> Click on each room to see the Students Performance </Col>
-
               <Col smOffset={2} sm={10}>
-
                 {this.displayAllEligibleClasses()}
               </Col>
-
             </FormGroup>
           </Form>
           : ""

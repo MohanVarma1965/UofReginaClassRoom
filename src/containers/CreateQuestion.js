@@ -161,10 +161,10 @@ class CreateQuestion extends React.Component {
         <FormGroup controlId="formHorizontalAnswer">
           <Col componentClass={ControlLabel} sm={10}> Select Correct Answer
             <select required className="questionFormSelect" value={this.state.answer} onChange={this.answer}>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-              <option value="D">D</option>
+              <option value="0">A</option>
+              <option value="1">B</option>
+              <option value="2">C</option>
+              <option value="3">D</option>
             </select>
           </Col>
         </FormGroup>
