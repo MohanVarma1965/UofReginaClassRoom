@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {FormGroup, Form, ControlLabel, FormControl, HelpBlock, Col, Button} from 'react-bootstrap';
 import {registerWithEmailPassword, signOut} from "../actions/auth";
 import {bindActionCreators} from 'redux';
-import { Link, Redirect } from 'react-router';
 
 class RegisterLink extends React.Component {
 

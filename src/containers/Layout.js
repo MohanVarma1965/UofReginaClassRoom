@@ -1,9 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import {Page, Row, Column} from 'hedron';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {OrderedSet} from 'immutable';
 import SidePannel from './SidePannel/index';
 
 import Notifications from './Notifications';

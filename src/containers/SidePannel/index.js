@@ -3,10 +3,8 @@ import {connect} from 'react-redux';
 import {Link, IndexLink} from 'react-router';
 import {authLoggedInSuccess, hasLoginToken, signInwithEmailPassword, signOut} from "../../actions/auth";
 import {bindActionCreators} from 'redux';
-import {push} from "react-router-redux";
 import {providerLoginSuccess, userLoadedSuccess} from "../../actions/user";
 import {beginAjaxCall} from "../../actions/ajaxStatus";
-import {FormGroup, Form, ControlLabel, FormControl, HelpBlock, Col, Button} from 'react-bootstrap';
 
 class SidePannel extends React.Component {
 

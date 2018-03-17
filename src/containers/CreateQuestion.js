@@ -1,21 +1,14 @@
 import React from 'react';
-import '../components/Header/header.css';
 import {connect} from 'react-redux';
 import {
   FormGroup,
   Form,
   ControlLabel,
   FormControl,
-  HelpBlock,
   Col,
   Button,
-  ButtonToolbar,
-  DropdownButton,
-  MenuItem
 } from 'react-bootstrap';
-import {authLoggedInSuccess, hasLoginToken, signInwithEmailPassword, signOut} from "../actions/auth";
 import {bindActionCreators} from 'redux';
-import {providerLoginSuccess, userLoadedSuccess} from "../actions/user";
 import {saveQuiz, deleteRoom} from '../actions/lecturerActions'
 
 class CreateQuestion extends React.Component {

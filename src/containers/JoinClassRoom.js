@@ -1,5 +1,4 @@
 import React from 'react';
-import '../components/Header/header.css';
 import {connect} from 'react-redux';
 import {
   FormGroup,

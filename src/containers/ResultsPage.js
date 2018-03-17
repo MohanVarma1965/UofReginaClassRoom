@@ -1,8 +1,8 @@
 import React from 'react';
-import '../components/Header/header.css';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ColumnChart, PieChart} from 'react-chartkick';
+
 window.Chart = require('chart.js');
 
 class ResultsPage extends React.Component {
@@ -54,7 +54,8 @@ class ResultsPage extends React.Component {
     debugger;
     debugger;
     console.log(this.props.listOfAllClasses);
-    return (<ColumnChart  discrete={true} stacked={true} xtitle="StudentIDs" ytitle="Correct Answers" download={true} data={this.renderResults() }/>)
+    return (<ColumnChart discrete={true} stacked={true} xtitle="StudentIDs" ytitle="Correct Answers" download={true}
+                         data={this.renderResults()}/>)
   }
 };
 
