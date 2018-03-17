@@ -18,7 +18,7 @@ class PageHeader extends React.Component {
         <div className="header-name">
           {this.props.auth.isLogged
           && this.props.user
-          && this.props.user.displayName ? ("welcome " + this.props.user.displayName): ""}</div>
+          && this.props.user.displayName ? ("Welcome " + this.props.user.displayName): ""}</div>
         {this.props.auth.isLogged ? <Button className="uoRButton" onClick={this.props.actions.signOut}> Sign out </Button> : ""}
       </div>
     )
