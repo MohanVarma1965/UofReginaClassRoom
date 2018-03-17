@@ -79,13 +79,28 @@
 
 .error {
   color: red;
+  display:block;
 }
 
 .classRooms{
   margin: 10px 0px;
 }
 
-.roomButton {
+.classRooms .save {
+  min-width: 120px;
+  margin-left: 25px;
+  background: green;
+  color: white;
+}
 
+.classRooms .quit {
+  min-width: 120px;
+  margin-left: 25px;
+  background: #b91616;
+  color: white;
+}
+
+.roomButton {
   min-width: 150px;
 }
+

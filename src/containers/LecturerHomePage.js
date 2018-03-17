@@ -69,11 +69,11 @@ class LecturerHomePage extends React.Component {
         data.push(
           <div className="classRooms">
             <Link to={`${resultsPage}`}><Button className="roomButton">{prop}</Button></Link>
-            <Button className="questionFormButton save" disabled={listOfClasses[prop].hosted ? true : false} onClick={this.hostQuiz} value={prop}> Start
+            <Button className="save" disabled={listOfClasses[prop].hosted ? true : false} onClick={this.hostQuiz} value={prop}> Start
               Hosting </Button>
-            <Button className="questionFormButton quit" disabled={listOfClasses[prop].hosted ? listOfClasses[prop].endHostedQuiz ? true : false :true} onClick={this.endHostedQuiz}
+            <Button className="quit" disabled={listOfClasses[prop].hosted ? listOfClasses[prop].endHostedQuiz ? true : false :true} onClick={this.endHostedQuiz}
                     value={prop}> End Hosting</Button>
-            <Button className="questionFormButton save" onClick={this.resetHostedQuiz} value={prop}> Reset </Button>
+            <Button className="save" onClick={this.resetHostedQuiz} value={prop}> Reset </Button>
           </div>
         )
       }
@@ -114,7 +114,7 @@ class LecturerHomePage extends React.Component {
         {this.props.listOfAllClasses ?
           <Form onSubmit={this.getResults}>
             <FormGroup controlId="GetListOfClasses">
-              <Col componentClass={ControlLabel} sm={10}> Click on each room to see the Students Performance </Col>
+              {this.state.showGetAllRoomButton ? "" :<Col componentClass={ControlLabel} sm={10}> Click on each room to see the Students Performance </Col> }
               <Col smOffset={2} sm={10}>
                 {this.displayAllEligibleClasses()}
               </Col>

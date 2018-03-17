@@ -42,7 +42,7 @@ class LoginWithEmailPassword extends React.Component {
         <FormGroup controlId="formHorizontalEmail">
           <Col componentClass={ControlLabel} sm={2}> Email Address </Col>
           <Col sm={10}>
-            <FormControl type="email" value={this.state.emailAddress} onChange={this.handleEmailChange}
+            <FormControl required type="email" value={this.state.emailAddress} onChange={this.handleEmailChange}
                          placeholder="Enter email"/>
           </Col>
         </FormGroup>
@@ -50,7 +50,7 @@ class LoginWithEmailPassword extends React.Component {
         <FormGroup controlId="formHorizontalPassword">
           <Col componentClass={ControlLabel} sm={2}> Password </Col>
           <Col sm={10}>
-            <FormControl type="password" value={this.state.passwordValue} onChange={this.handlePasswordChange}
+            <FormControl required type="password" value={this.state.passwordValue} onChange={this.handlePasswordChange}
                          placeholder="Enter password"/>
           </Col>
         </FormGroup>

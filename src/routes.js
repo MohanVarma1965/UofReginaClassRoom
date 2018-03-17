@@ -1,8 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import AboutPage from './containers/AboutPage';
-import HomePage from './containers/HomePage';
 import NotFound from './containers/NotFoundPage';
 import Layout from './containers/Layout';
 import ProtectedPage from './containers/AccountPage';
@@ -26,8 +24,6 @@ export default function Routes(store) {
       <Route path='createQuestion' component={CreateQuestion}/>
       <Route path='getandAnswerQuestions' component={GetandAnswerQuestions}/>
       <Route path='resultsPage' component={ResultsPage}/>
-
-      CreateQuestions
       <Route path='results' component={ProtectedPage}/>
       <Route path='*' component={NotFound}/>
     </Route>

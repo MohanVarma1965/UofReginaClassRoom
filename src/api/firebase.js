@@ -1,7 +1,6 @@
 import * as firebase from 'firebase/firebase-browser';
 import {firebaseConfig} from '../config/';
 import {registrationCallError} from "../actions/registrationAction";
-import {getAllClasses} from '../actions/lecturerActions';
 
 class FirebaseApi {
 
@@ -31,7 +30,7 @@ class FirebaseApi {
     return firebase.auth().signOut();
   }
 
-  static questionsPushToDatabase(questions, currentClassRoom) {
+  static pushQuestionsToDatabase(questions, currentClassRoom) {
 
     let user = firebase.auth().currentUser;
     debugger;
@@ -55,12 +54,8 @@ class FirebaseApi {
     });
   }
 
-  static cloudDatabasePush(value) {
-
+  static createRoom(classRoom) {
     let user = firebase.auth().currentUser;
-    debugger;
-    let classRoom = `CS${value}`;
-
     let valuemod = {
       RoomValue: classRoom,
       owner: user.uid,
@@ -140,7 +135,6 @@ class FirebaseApi {
         .ref(`users/classRooms/${roomNumber}`).child(`studentIDs/${studentID}`)
         .set(modifiedValue, (error) => {
           if (error) {
-            debugger;
             console.log(error);
             reject(error);
           } else {
@@ -194,11 +188,9 @@ class FirebaseApi {
         .ref(`users/classRooms/${currentClassRoom}/studentIDs/${studentID}/answers`)
         .set(answers, (error) => {
           if (error) {
-            debugger;
             console.log(error);
             reject(error);
           } else {
-            console.log("Answers are posted");
             resolve(currentClassRoom);
           }
         });
@@ -212,12 +204,6 @@ class FirebaseApi {
         .database()
         .ref(`users/classRooms/${roomNumber}/`)
         .on('value', function(snapshot) {
-        debugger;
-          console.log("snapshot.val().questions");
-
-          console.log(snapshot.val().questions);
-          console.log(snapshot.val().hosted);
-
           let resolvedValues = [];
           resolvedValues.push(snapshot.val().questions);
           resolvedValues.push(snapshot.val().hosted);

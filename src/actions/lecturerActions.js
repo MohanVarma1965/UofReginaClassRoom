@@ -12,7 +12,7 @@ export function createRoom(roomNumber) {
   debugger;
   return (dispatch) => {
     dispatch(beginAjaxCall());
-    return firebaseApi.cloudDatabasePush(roomNumber)
+    return firebaseApi.createRoom(roomNumber)
       .then((currentClassRoom) => {
         debugger;
         dispatch(classCreationCallSuccess(currentClassRoom));
@@ -56,7 +56,7 @@ export function saveQuiz(questions, currentClassRoom) {
   debugger;
   return (dispatch) => {
     dispatch(beginAjaxCall());
-    return firebaseApi.questionsPushToDatabase(questions, currentClassRoom)
+    return firebaseApi.pushQuestionsToDatabase(questions, currentClassRoom)
       .then((result) => {
         debugger;
         dispatch(notify(`Quiz for your class room ${currentClassRoom} is saved successfully`));
