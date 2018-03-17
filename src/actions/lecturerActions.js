@@ -5,7 +5,7 @@ import {ajaxCallError, beginAjaxCall} from './ajaxStatus';
 import {notify} from './notifications';
 import {providerLoginSuccess, userLoadedSuccess, userCreated} from './user';
 import CreateClassRoom from "../containers/CreateClassRoom";
-import {classCreationCallSuccess, getAllClassesCallSuccess} from '../actions/classRoomAction'
+import {classCreationCallSuccess, getAllClassesCallSuccess} from '../actions/classRoomAction';
 
 
 export function createRoom(roomNumber) {
@@ -52,8 +52,6 @@ export function getAllClasses() {
 }
 
 
-
-
 export function saveQuiz(questions, currentClassRoom) {
   debugger;
   return (dispatch) => {
@@ -66,6 +64,69 @@ export function saveQuiz(questions, currentClassRoom) {
 
         /*dispatch(loginCallSuccess());
 
+          dispatch(authLoggedIn());*/
+      })
+      .catch(error => {
+        debugger;
+        // dispatch(loginCallError(error));
+        console.log(error);
+      });
+  };
+}
+
+
+export function hostQuiz(roomNumber) {
+  debugger;
+  return (dispatch) => {
+    dispatch(beginAjaxCall());
+    return firebaseApi.hostQuiz(roomNumber)
+      .then((hostedResult) => {
+        debugger;
+        //dispatch(hostQuiz());
+        /*dispatch(loginCallSuccess());
+        dispatch(notify(`Welcome ${result.displayName}`));
+          dispatch(authLoggedIn());*/
+      })
+      .catch(error => {
+        debugger;
+        // dispatch(loginCallError(error));
+        console.log(error);
+      });
+  };
+}
+
+
+
+export function endHostedQuiz(roomNumber) {
+  debugger;
+  return (dispatch) => {
+    dispatch(beginAjaxCall());
+    return firebaseApi.endHostedQuiz(roomNumber)
+      .then((hostedResult) => {
+        debugger;
+        //dispatch(hostQuiz());
+        /*dispatch(loginCallSuccess());
+        dispatch(notify(`Welcome ${result.displayName}`));
+          dispatch(authLoggedIn());*/
+      })
+      .catch(error => {
+        debugger;
+        // dispatch(loginCallError(error));
+        console.log(error);
+      });
+  };
+}
+
+export function resetHostedQuiz(roomNumber) {
+  debugger;
+  return (dispatch) => {
+    dispatch(beginAjaxCall());
+    return firebaseApi.resetHostedQuiz(roomNumber)
+      .then((hostedResult) => {
+        debugger;
+        //dispatch(hostQuiz());
+        /*dispatch(loginCallSuccess());
+        dispatch(notify(`Welcome ${result.displayName}`));
           dispatch(authLoggedIn());*/
       })
       .catch(error => {

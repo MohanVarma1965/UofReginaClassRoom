@@ -31,6 +31,8 @@ export default {
     currentClassRoom : 'default',
     questions:'',
     studentId:'',
-    listOfAllClasses:''
+    listOfAllClasses:'',
+    hosted:'',
+    endHostedQuiz:''
   }
 };

@@ -33,9 +33,9 @@ class GetandAnswerQuestions extends React.Component {
     let answerArray = this.state.answersArray;
     let noOfQuestions = this.props.questions.length;
 
-    for(let i=0; i< noOfQuestions; i++ ){
-      if(!answerArray[i]){
-          return true;
+    for (let i = 0; i < noOfQuestions; i++) {
+      if (!answerArray[i]) {
+        return true;
       }
     }
     return false;
@@ -55,12 +55,12 @@ class GetandAnswerQuestions extends React.Component {
   submitQuiz(e) {
     e.preventDefault();
     let error = this.checkForError()
-    this.setState({error : error});
+    this.setState({error: error});
 
-    if(error) {
+    if (error) {
       return
     }
-    this.props.actions.submitQuiz(this.props.currentClassRoom,this.props.studentID,this.state.answersArray);
+    this.props.actions.submitQuiz(this.props.currentClassRoom, this.props.studentID, this.state.answersArray);
   }
 
 
@@ -85,7 +85,7 @@ class GetandAnswerQuestions extends React.Component {
 
       <FormGroup>
         <Col sm={10}>
-          <div className="error"> {this.state.error ? "*Please enter all fields" : "" }</div>
+          <div className="error"> {this.state.error ? "*Please enter all fields" : ""}</div>
         </Col>
       </FormGroup>
 
@@ -99,9 +99,18 @@ class GetandAnswerQuestions extends React.Component {
 
   render() {
     debugger;
-    let questions = this.props.questions ? this.renderQuestions() :
-      <div> There are no questions to display, please re check and join the correct class room</div>;
-    return questions
+    let renderData;
+    debugger;
+
+    if (this.props.hosted && !this.props.endHostedQuiz) {
+      let questions = this.props.questions ? this.renderQuestions() :
+        <div> There are no questions to display, please re check and join the correct class room</div>;
+      return questions
+    } else {
+      return this.props.hosted ? this.props.endHostedQuiz ?
+        <div className="error"> The Lecturer has ended the quiz</div> :
+        "" : <div className="error"> The Quiz is not hosted</div>
+    }
   }
 };
 
@@ -113,7 +122,8 @@ function mapStateToProps(state) {
     questions: state.classJoinReducer.questions,
     currentClassRoom: state.classJoinReducer.currentClassRoom,
     studentID: state.classJoinReducer.studentID,
-
+    hosted: state.classJoinReducer.hosted,
+    endHostedQuiz: state.classJoinReducer.endHostedQuiz
   };
 }
 

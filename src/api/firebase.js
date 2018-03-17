@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/firebase-browser';
 import {firebaseConfig} from '../config/';
 import {registrationCallError} from "../actions/registrationAction";
+import {getAllClasses} from '../actions/lecturerActions';
 
 class FirebaseApi {
 
@@ -47,6 +48,7 @@ class FirebaseApi {
             reject(error);
           } else {
             console.log("data set correctly");
+
             resolve("success");
           }
         });
@@ -64,6 +66,7 @@ class FirebaseApi {
       owner: user.uid,
       saved: false,
       hosted: false,
+      endHostedQuiz:false,
       questions: [],
       studentIDs: []
     }
@@ -148,7 +151,42 @@ class FirebaseApi {
     });
   }
 
+  static hostQuiz(currentClassRoom) {
+    debugger;
+    return new Promise((resolve, reject) => {
+      var updates = {};
+      updates['/hosted/'] = true;
+      firebase
+        .database()
+        .ref(`users/classRooms/${currentClassRoom}`)
+        .update(updates);
+    });
+  }
 
+  static endHostedQuiz(currentClassRoom) {
+    debugger;
+    return new Promise((resolve, reject) => {
+      var updates = {};
+      updates['/endHostedQuiz/'] = true;
+      firebase
+        .database()
+        .ref(`users/classRooms/${currentClassRoom}`)
+        .update(updates);
+    });
+  }
+
+  static resetHostedQuiz(currentClassRoom) {
+    debugger;
+    return new Promise((resolve, reject) => {
+      var updates = {};
+      updates['/endHostedQuiz/'] = false;
+      updates['/hosted/'] = false;
+      firebase
+        .database()
+        .ref(`users/classRooms/${currentClassRoom}`)
+        .update(updates);
+    });
+  }
   static submitQuiz(currentClassRoom, studentID, answers) {
     return new Promise((resolve, reject) => {
       firebase
@@ -167,24 +205,28 @@ class FirebaseApi {
     });
   }
 
-
   static databaseQuestionsFetch(studentID, roomNumber) {
 
     return new Promise((resolve, reject) => {
       firebase
         .database()
-        .ref(`users/classRooms/${roomNumber}/questions`)
+        .ref(`users/classRooms/${roomNumber}/`)
         .on('value', function(snapshot) {
         debugger;
-        resolve(snapshot.val());
+          console.log("snapshot.val().questions");
+
+          console.log(snapshot.val().questions);
+          console.log(snapshot.val().hosted);
+
+          let resolvedValues = [];
+          resolvedValues.push(snapshot.val().questions);
+          resolvedValues.push(snapshot.val().hosted);
+          resolvedValues.push(snapshot.val().endHostedQuiz);
+          resolve(resolvedValues);
         // ...
       });
     });
   }
-
-
-
-
 
   static GetValueByKeyOnce(path, key) {
     return firebase

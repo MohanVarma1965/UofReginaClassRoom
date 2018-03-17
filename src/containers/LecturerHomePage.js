@@ -8,7 +8,7 @@ import {push} from "react-router-redux";
 import {providerLoginSuccess, userLoadedSuccess} from "../actions/user";
 import {beginAjaxCall} from "../actions/ajaxStatus";
 import {Link, Redirect} from 'react-router';
-import {createRoom, getAllClasses} from '../actions/lecturerActions';
+import {createRoom, getAllClasses, hostQuiz, endHostedQuiz, resetHostedQuiz} from '../actions/lecturerActions';
 
 class LecturerHomePage extends React.Component {
 
@@ -18,7 +18,10 @@ class LecturerHomePage extends React.Component {
     this.enterRoomNo = this.enterRoomNo.bind(this);
     this.getAllClasses = this.getAllClasses.bind(this);
     this.displayAllEligibleClasses = this.displayAllEligibleClasses.bind(this);
-    this.state = {classRoomNumber: '', showGetAllRoomButton : true}
+    this.endHostedQuiz = this.endHostedQuiz.bind(this);
+    this.resetHostedQuiz= this.resetHostedQuiz.bind(this);
+    this.hostQuiz = this.hostQuiz.bind(this);
+    this.state = {classRoomNumber: '', showGetAllRoomButton: true}
   }
 
   createRoom(e) {
@@ -32,10 +35,26 @@ class LecturerHomePage extends React.Component {
 
   getAllClasses(e) {
     e.preventDefault();
-    this.setState({showGetAllRoomButton : false});
+    this.setState({showGetAllRoomButton: false});
     this.props.actions.getAllClasses();
   }
 
+  hostQuiz(e) {
+    this.props.actions.hostQuiz(e.target.value);
+    this.props.actions.getAllClasses();
+  }
+
+  endHostedQuiz(e) {
+
+    this.props.actions.endHostedQuiz(e.target.value);
+    this.props.actions.getAllClasses();
+  }
+
+
+  resetHostedQuiz(e) {
+    this.props.actions.resetHostedQuiz(e.target.value);
+    this.props.actions.getAllClasses();
+  }
 
   displayAllEligibleClasses() {
     debugger;
@@ -44,10 +63,19 @@ class LecturerHomePage extends React.Component {
 
     let data = [];
 
-    for(var prop in listOfClasses) {
+    for (var prop in listOfClasses) {
       if (listOfClasses[prop].owner == userID) {
-        let resultsPage =`/resultsPage?${prop}`;
-        data.push(<Link to = {`${resultsPage}`} >{prop}</Link>)
+        let resultsPage = `/resultsPage?${prop}`;
+        data.push(
+          <div className="classRooms">
+            <Link to={`${resultsPage}`}><Button className="roomButton">{prop}</Button></Link>
+            <Button className="questionFormButton save" disabled={listOfClasses[prop].hosted ? true : false} onClick={this.hostQuiz} value={prop}> Start
+              Hosting </Button>
+            <Button className="questionFormButton quit" disabled={listOfClasses[prop].hosted ? listOfClasses[prop].endHostedQuiz ? true : false :true} onClick={this.endHostedQuiz}
+                    value={prop}> End Hosting</Button>
+            <Button className="questionFormButton save" onClick={this.resetHostedQuiz} value={prop}> Reset </Button>
+          </div>
+        )
       }
     }
     debugger;
@@ -80,7 +108,7 @@ class LecturerHomePage extends React.Component {
             <Col smOffset={2} sm={10}>
               <Button type="submit"> Get Rooms </Button>
             </Col>
-          </FormGroup> : "" }
+          </FormGroup> : ""}
         </Form>
 
         {this.props.listOfAllClasses ?
@@ -118,7 +146,10 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
       createRoom,
-      getAllClasses
+      getAllClasses,
+      hostQuiz,
+      endHostedQuiz,
+      resetHostedQuiz
     }, dispatch)
   };
 }

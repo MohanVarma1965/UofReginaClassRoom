@@ -10,7 +10,9 @@ export default function classJoinReducer(state = initialState.classRoom, action)
       return Object.assign({}, state, {
         questions : action.payload.questions,
         currentClassRoom : action.payload.currentClassRoom,
-        studentID: action.payload.studentID
+        studentID: action.payload.studentID,
+        hosted: action.payload.hosted,
+        endHostedQuiz: action.payload.endHostedQuiz
       });
 
     default:

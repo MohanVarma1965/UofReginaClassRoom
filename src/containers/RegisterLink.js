@@ -82,8 +82,6 @@ class RegisterLink extends React.Component {
               </Col>
             </FormGroup>
 
-
-
           </Form>
         );
     return result;

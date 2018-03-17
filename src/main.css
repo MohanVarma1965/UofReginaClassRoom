@@ -80,3 +80,12 @@
 .error {
   color: red;
 }
+
+.classRooms{
+  margin: 10px 0px;
+}
+
+.roomButton {
+
+  min-width: 150px;
+}

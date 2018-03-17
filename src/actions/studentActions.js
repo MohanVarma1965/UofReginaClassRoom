@@ -17,8 +17,8 @@ export function joinRoom(studentID, roomNumber) {
       .then((currentClassRoom) => {
 //        dispatch(classJoinCallSuccess(currentClassRoom));
              dispatch(push('/getandAnswerQuestions'));
-        return firebaseApi.databaseQuestionsFetch(studentID, roomNumber).then((result) => {
-             dispatch(classJoinCallSuccess(result, roomNumber, studentID ));
+        return firebaseApi.databaseQuestionsFetch(studentID, roomNumber).then((resolvedValues) => {
+             dispatch(classJoinCallSuccess(resolvedValues[0], roomNumber, studentID, resolvedValues[1], resolvedValues[2] ));
         }).catch(error => {
           // dispatch(loginCallError(error));
           console.log(error);
