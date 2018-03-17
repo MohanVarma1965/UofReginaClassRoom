@@ -1,6 +1,5 @@
 import * as firebase from 'firebase/firebase-browser';
 import {firebaseConfig} from '../config/';
-import {registrationCallError} from "../actions/registrationAction";
 
 class FirebaseApi {
 
@@ -21,10 +20,10 @@ class FirebaseApi {
   static auth() {
     return firebase.auth;
   }
-
+/*
   static signInWithGitHub() {
     return firebase.auth().signInWithPopup(provider());
-  }
+  }*/
 
   static authSignOut() {
     return firebase.auth().signOut();
@@ -42,12 +41,10 @@ class FirebaseApi {
         .set(questions, (error) => {
           if (error) {
             debugger;
-            console.log("Error in data setting");
             console.log(error);
             reject(error);
           } else {
             console.log("data set correctly");
-
             resolve("success");
           }
         });
@@ -72,7 +69,6 @@ class FirebaseApi {
         .ref('users/classRooms').child(classRoom)
         .set(valuemod, (error) => {
           if (error) {
-            console.log("Error in data setting");
             console.log(error);
             reject(error);
           } else {
@@ -110,8 +106,6 @@ class FirebaseApi {
         .ref('users/classRooms').child(classRoom)
         .remove( (error) => {
           if (error) {
-            debugger;
-            console.log("Error in data setting");
             console.log(error);
             reject(error);
           } else {
@@ -243,7 +237,6 @@ class FirebaseApi {
   static registerWithEmailPassword(email, password, displayName) {
     return firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
       firebase.auth().currentUser.updateProfile({displayName: displayName});
-      console.log("firebase.database().currentUser");
       console.log(firebase.database().currentUser);
     })
   }
