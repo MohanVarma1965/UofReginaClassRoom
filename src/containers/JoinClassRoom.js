@@ -64,7 +64,7 @@ class JoinClassRoom extends React.Component {
 
         <FormGroup>
           <Col sm={10}>
-            <Button type="submit"> Join Room </Button>
+            <Button type="submit" className="uoRButton"> Join Room </Button>
           </Col>
         </FormGroup>
       </Form>

@@ -63,12 +63,12 @@ class LecturerHomePage extends React.Component {
         let resultsPage = `/resultsPage?${prop}`;
         data.push(
           <div className="classRooms">
-            <Link to={`${resultsPage}`}><Button className="roomButton">{prop}</Button></Link>
-            <Button className="save" disabled={listOfClasses[prop].hosted ? true : false} onClick={this.hostQuiz} value={prop}> Start
+            <Link to={`${resultsPage}`}><Button className="uoRButton">{prop}</Button></Link>
+            <Button className="save uoRButton" disabled={listOfClasses[prop].hosted ? true : false} onClick={this.hostQuiz} value={prop}> Start
               Hosting </Button>
-            <Button className="quit" disabled={listOfClasses[prop].hosted ? listOfClasses[prop].endHostedQuiz ? true : false :true} onClick={this.endHostedQuiz}
+            <Button className="quit uoRButton" disabled={listOfClasses[prop].hosted ? listOfClasses[prop].endHostedQuiz ? true : false :true} onClick={this.endHostedQuiz}
                     value={prop}> End Hosting</Button>
-            <Button className="save" onClick={this.resetHostedQuiz} value={prop}> Reset </Button>
+            <Button className="save uoRButton" onClick={this.resetHostedQuiz} value={prop}> Reset </Button>
           </div>
         )
       }
@@ -91,7 +91,7 @@ class LecturerHomePage extends React.Component {
 
           <FormGroup>
             <Col smOffset={2} sm={10}>
-              <Button type="submit"> Create Room </Button>
+              <Button type="submit" className="uoRButton"> Create Room </Button>
             </Col>
           </FormGroup>
         </Form>
@@ -101,7 +101,7 @@ class LecturerHomePage extends React.Component {
             <Col componentClass={ControlLabel} sm={10}> In order to see all the classes available click on the below
               link </Col>
             <Col smOffset={2} sm={10}>
-              <Button type="submit"> Get Rooms </Button>
+              <Button type="submit" className="uoRButton"> Get Rooms </Button>
             </Col>
           </FormGroup> : ""}
         </Form>

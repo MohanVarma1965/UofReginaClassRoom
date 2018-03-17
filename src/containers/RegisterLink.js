@@ -77,7 +77,7 @@ class RegisterLink extends React.Component {
             </FormGroup>
             <FormGroup>
               <Col smOffset={2} sm={10}>
-                <Button type="submit">Register</Button>
+                <Button className="uoRButton" type="submit">Register</Button>
               </Col>
             </FormGroup>
 

@@ -1,4 +1,8 @@
 
+html, body, .root {
+  height: 100%;
+}
+
 .header-container {
   background-color: black;
   color: white;
@@ -25,7 +29,7 @@
 }
 
 .sidePannel {
-  background-color: #f39d09;
+  background-color: black;
   flex-basis: 200px;
   font-size: 17px;
   font-weight: bold;
@@ -45,7 +49,6 @@
   color: #ff9800;
   text-decoration: none;
 }
-
 
 /* Class room related css */
 
@@ -82,25 +85,23 @@
   display:block;
 }
 
+.uoRButton {
+  min-width: 150px;
+}
+
 .classRooms{
   margin: 10px 0px;
 }
 
 .classRooms .save {
-  min-width: 120px;
   margin-left: 25px;
   background: green;
   color: white;
 }
 
 .classRooms .quit {
-  min-width: 120px;
   margin-left: 25px;
   background: #b91616;
   color: white;
-}
-
-.roomButton {
-  min-width: 150px;
 }
 

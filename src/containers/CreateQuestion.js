@@ -171,8 +171,8 @@ class CreateQuestion extends React.Component {
         <FormGroup>
           <Col sm={10}>
             <Button onClick={this.nextQuestion} className="questionFormButton"> Next Question </Button>
-            <Button type="submit" className="questionFormButton save"> Save Quiz </Button>
-            <Button className="questionFormButton quit" onClick={this.deleteRoom}> Delete Quiz and Room </Button>
+            <Button type="submit" className=" uoRButton save"> Save Quiz </Button>
+            <Button className="uoRButton questionFormButton quit" onClick={this.deleteRoom}> Delete Quiz</Button>
           </Col>
         </FormGroup>
 

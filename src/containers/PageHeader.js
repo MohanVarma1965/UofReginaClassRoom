@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {signOut} from "../actions/auth";
 import {bindActionCreators} from 'redux';
+import {Button} from 'react-bootstrap';
 
 class PageHeader extends React.Component {
 
@@ -18,7 +19,7 @@ class PageHeader extends React.Component {
           {this.props.auth.isLogged
           && this.props.user
           && this.props.user.displayName ? ("welcome " + this.props.user.displayName): ""}</div>
-        {this.props.auth.isLogged ? <button onClick={this.props.actions.signOut}> Sign out </button> : ""}
+        {this.props.auth.isLogged ? <Button className="uoRButton" onClick={this.props.actions.signOut}> Sign out </Button> : ""}
       </div>
     )
 

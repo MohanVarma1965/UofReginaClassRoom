@@ -22,9 +22,6 @@ import initialState from './reducers/initialState';
 import configureStore from './store/configure'; //eslint-disable-line import/default
 import './main.css'
 
-// Styles
-import global from './styles/global';
-
 // store initialization
 export const store = configureStore(initialState);
 
@@ -39,7 +36,6 @@ FirebaseApi.initAuth()
   .then(
     user => {
       store.dispatch(authInitialized(user));
-
       ReactDOM.render(
         <AppContainer>
           <Provider store={store}>

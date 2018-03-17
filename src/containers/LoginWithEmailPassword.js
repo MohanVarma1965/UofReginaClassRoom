@@ -58,7 +58,7 @@ class LoginWithEmailPassword extends React.Component {
 
         <FormGroup>
           <Col smOffset={2} sm={10}>
-            <Button type="submit">Login </Button>
+            <Button className="uoRButton" type="submit">Login </Button>
           </Col>
         </FormGroup>
 
