@@ -1,10 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, IndexLink} from 'react-router';
-import {authLoggedInSuccess, hasLoginToken, signInwithEmailPassword, signOut} from "../../actions/auth";
+import {authLoggedInSuccess, hasLoginToken, signInwithEmailPassword, signOut} from "../actions/auth";
 import {bindActionCreators} from 'redux';
-import {providerLoginSuccess, userLoadedSuccess} from "../../actions/user";
-import {beginAjaxCall} from "../../actions/ajaxStatus";
 
 class SidePannel extends React.Component {
 

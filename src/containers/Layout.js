@@ -2,7 +2,7 @@ import React from 'react';
 import {Page, Row, Column} from 'hedron';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import SidePannel from './SidePannel/index';
+import SidePannel from './SidePannel';
 
 import Notifications from './Notifications';
 import {registerWithEmailPassword, signInwithEmailPassword, signOut} from '../actions/auth';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NotificationStack } from 'react-notification';
-import { dismiss } from '../../actions/notifications';
+import { dismiss } from '../actions/notifications';
 
 class Notifications extends React.Component {
   render() {
