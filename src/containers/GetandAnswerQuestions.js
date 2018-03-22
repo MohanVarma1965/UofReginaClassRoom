@@ -64,8 +64,8 @@ class GetandAnswerQuestions extends React.Component {
     return <Form horizontal onSubmit={this.submitQuiz}>
       {this.props.questions.map((question, questionIndex) => {
         return (
-          <Form>
-            <FormGroup>
+          <Form >
+            <FormGroup className="questionsGroup">
               <Col componentClass={ControlLabel} sm={10}> {questionIndex + 1 + ")"} {question.question} </Col>
               <Col smOffset={4} sm={10}>
                 {question.options.map((option, optionIndex) => {

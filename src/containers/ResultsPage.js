@@ -56,7 +56,7 @@ class ResultsPage extends React.Component {
   }
 
   render() {
-    return (<ColumnChart suffix="%" discrete={true} stacked={true} xtitle='StudentIDs' ytitle='Correct Answers' download={true}
+    return (<ColumnChart colors={["#ff9800", "#666"]} suffix='%' discrete={true} stacked={true} xtitle='StudentIDs' ytitle='Correct Answers' download={true}
                          data={this.renderResults()}/>)
   }
 }
