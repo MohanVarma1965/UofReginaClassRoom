@@ -1,0 +1,41 @@
+[debug] [2018-03-17T19:43:50.452Z] ----------------------------------------------------------------------
+[debug] [2018-03-17T19:43:50.456Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\mohan\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase init
+[debug] [2018-03-17T19:43:50.456Z] CLI Version:   3.17.6
+[debug] [2018-03-17T19:43:50.456Z] Platform:      win32
+[debug] [2018-03-17T19:43:50.456Z] Node Version:  v8.9.4
+[debug] [2018-03-17T19:43:50.456Z] Time:          Sat Mar 17 2018 13:43:50 GMT-0600 (Canada Central Standard Time)
+[debug] [2018-03-17T19:43:50.456Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-03-17T19:43:50.469Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2018-03-17T19:43:50.470Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\ReactProjects\react-firebase-boilerplate
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2018-03-17T20:22:46.973Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-03-17T20:22:46.977Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/3pUVmalY6w_12qdnmwbNtDKLzmMEvCsbNG4HIutPdcU',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Mar 17 2018 14:22:46 GMT-0600 (Canada Central Standard Time)
+[debug] [2018-03-17T20:22:47.336Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-17T20:22:47.345Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects  
+  
+ Sat Mar 17 2018 14:22:47 GMT-0600 (Canada Central Standard Time)
+[debug] [2018-03-17T20:22:48.525Z] <<< HTTP RESPONSE 200

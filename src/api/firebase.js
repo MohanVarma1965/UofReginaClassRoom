@@ -20,10 +20,11 @@ class FirebaseApi {
   static auth() {
     return firebase.auth;
   }
-/*
-  static signInWithGitHub() {
-    return firebase.auth().signInWithPopup(provider());
-  }*/
+
+  /*
+    static signInWithGitHub() {
+      return firebase.auth().signInWithPopup(provider());
+    }*/
 
   static authSignOut() {
     return firebase.auth().signOut();
@@ -32,7 +33,6 @@ class FirebaseApi {
   static pushQuestionsToDatabase(questions, currentClassRoom) {
 
     let user = firebase.auth().currentUser;
-    debugger;
 
     return new Promise((resolve, reject) => {
       firebase
@@ -40,11 +40,10 @@ class FirebaseApi {
         .ref('users/classRooms').child(currentClassRoom).child('questions')
         .set(questions, (error) => {
           if (error) {
-            debugger;
             console.log(error);
             reject(error);
           } else {
-            console.log("data set correctly");
+            // console.log("data set correctly");
             resolve("success");
           }
         });
@@ -58,7 +57,7 @@ class FirebaseApi {
       owner: user.uid,
       saved: false,
       hosted: false,
-      endHostedQuiz:false,
+      endHostedQuiz: false,
       questions: [],
       studentIDs: []
     }
@@ -72,7 +71,7 @@ class FirebaseApi {
             console.log(error);
             reject(error);
           } else {
-            console.log("data set correctly");
+            // console.log("data set correctly");
             resolve(classRoom);
           }
         });
@@ -82,20 +81,16 @@ class FirebaseApi {
   static getAllClasses() {
 
     let userID = firebase.auth().currentUser.uid;
-    debugger;
-
     return new Promise((resolve, reject) => {
       firebase
         .database()
         .ref('users/classRooms/')
-        .on('value', function(snapshot) {
-          debugger;
+        .on('value', function (snapshot) {
           resolve(snapshot.val());
           // ...
         });
     });
   }
-
 
 
   static deleteRoom(classRoom) {
@@ -104,13 +99,12 @@ class FirebaseApi {
       firebase
         .database()
         .ref('users/classRooms').child(classRoom)
-        .remove( (error) => {
+        .remove((error) => {
           if (error) {
-            console.log(error);
+            // console.log(error);
             reject(error);
           } else {
-            debugger;
-            console.log("data set correctly");
+            // console.log("data set correctly");
             resolve(classRoom);
           }
         });
@@ -120,7 +114,7 @@ class FirebaseApi {
   static joinClassRoom(studentID, roomNumber) {
 
     let modifiedValue = {
-          studentID : studentID
+      studentID: studentID
     }
 
     return new Promise((resolve, reject) => {
@@ -129,10 +123,10 @@ class FirebaseApi {
         .ref(`users/classRooms/${roomNumber}`).child(`studentIDs/${studentID}`)
         .set(modifiedValue, (error) => {
           if (error) {
-            console.log(error);
+            // console.log(error);
             reject(error);
           } else {
-            console.log("data set correctly");
+            // console.log("data set correctly");
             resolve(roomNumber);
           }
         });
@@ -140,7 +134,6 @@ class FirebaseApi {
   }
 
   static hostQuiz(currentClassRoom) {
-    debugger;
     return new Promise((resolve, reject) => {
       var updates = {};
       updates['/hosted/'] = true;
@@ -152,7 +145,6 @@ class FirebaseApi {
   }
 
   static endHostedQuiz(currentClassRoom) {
-    debugger;
     return new Promise((resolve, reject) => {
       var updates = {};
       updates['/endHostedQuiz/'] = true;
@@ -164,7 +156,6 @@ class FirebaseApi {
   }
 
   static resetHostedQuiz(currentClassRoom) {
-    debugger;
     return new Promise((resolve, reject) => {
       var updates = {};
       updates['/endHostedQuiz/'] = false;
@@ -175,6 +166,7 @@ class FirebaseApi {
         .update(updates);
     });
   }
+
   static submitQuiz(currentClassRoom, studentID, answers) {
     return new Promise((resolve, reject) => {
       firebase
@@ -182,7 +174,7 @@ class FirebaseApi {
         .ref(`users/classRooms/${currentClassRoom}/studentIDs/${studentID}/answers`)
         .set(answers, (error) => {
           if (error) {
-            console.log(error);
+            // console.log(error);
             reject(error);
           } else {
             resolve(currentClassRoom);
@@ -197,14 +189,14 @@ class FirebaseApi {
       firebase
         .database()
         .ref(`users/classRooms/${roomNumber}/`)
-        .on('value', function(snapshot) {
+        .on('value', function (snapshot) {
           let resolvedValues = [];
           resolvedValues.push(snapshot.val().questions);
           resolvedValues.push(snapshot.val().hosted);
           resolvedValues.push(snapshot.val().endHostedQuiz);
           resolve(resolvedValues);
-        // ...
-      });
+          // ...
+        });
     });
   }
 

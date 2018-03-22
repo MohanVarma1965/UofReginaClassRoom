@@ -21,9 +21,9 @@ class Layout extends React.Component {
       <div className="layout-container">
         <PageHeader/>
         <div className="pannels-container">
-          <SidePannel />
+          <SidePannel/>
           <div className="mainPannel">
-              {this.props.children}
+            {this.props.children}
           </div>
         </div>
         <Notifications/>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import {Route, IndexRoute} from 'react-router';
 
 import NotFound from './containers/NotFoundPage';
 import Layout from './containers/Layout';
-import Register from './containers/RegisterLink'
+import Register from './containers/RegisterLink';
 import LoginWithEmailPassword from './containers/LoginWithEmailPassword';
 import CreateQuestion from './containers/CreateQuestion';
 import LecturerHomePage from './containers/LecturerHomePage';

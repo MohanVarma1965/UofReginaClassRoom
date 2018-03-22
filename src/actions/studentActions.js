@@ -6,14 +6,13 @@ import {classJoinCallSuccess} from '../actions/classRoomAction'
 
 
 export function joinRoom(studentID, roomNumber) {
-  debugger;
   return (dispatch) => {
     dispatch(beginAjaxCall());
     return firebaseApi.joinClassRoom(studentID, roomNumber)
       .then((currentClassRoom) => {
-             dispatch(push('/getandAnswerQuestions'));
+        dispatch(push('/getandAnswerQuestions'));
         return firebaseApi.databaseQuestionsFetch(studentID, roomNumber).then((resolvedValues) => {
-             dispatch(classJoinCallSuccess(resolvedValues[0], roomNumber, studentID, resolvedValues[1], resolvedValues[2] ));
+          dispatch(classJoinCallSuccess(resolvedValues[0], roomNumber, studentID, resolvedValues[1], resolvedValues[2]));
         }).catch(error => {
           // dispatch(loginCallError(error));
           console.log(error);
@@ -42,18 +41,15 @@ export function submitQuiz(currentClassRoom, studentID, answers) {
 }
 
 export function deleteRoom(currentClassRoom) {
-  debugger;
   return (dispatch) => {
     dispatch(beginAjaxCall());
     return firebaseApi.deleteRoom(currentClassRoom)
       .then((result) => {
-        debugger;
         dispatch(notify(`Your current class room ${currentClassRoom} is Deleted`));
         dispatch(push('/lecturerHomepage'));
 
       })
       .catch(error => {
-        debugger;
         // dispatch(loginCallError(error));
         console.log(error);
       });

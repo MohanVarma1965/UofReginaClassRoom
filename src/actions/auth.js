@@ -1,13 +1,13 @@
 import firebase from 'firebase';
-import { push } from 'react-router-redux';
+import {push} from 'react-router-redux';
 
 import firebaseApi from '../api/firebase';
 import * as types from '../config/constants';
-import { ajaxCallError, beginAjaxCall } from './ajaxStatus';
-import { notify } from './notifications';
-import { providerLoginSuccess, userLoadedSuccess, userCreated } from './user';
+import {ajaxCallError, beginAjaxCall} from './ajaxStatus';
+import {notify} from './notifications';
+import {providerLoginSuccess, userLoadedSuccess, userCreated} from './user';
 import {registrationCallError, registrationCallSuccess} from './registrationAction';
-import {loginCallError,loginCallSuccess} from './loginAction';
+import {loginCallError, loginCallSuccess} from './loginAction';
 
 export function authInitializedDone() {
   return {
@@ -22,7 +22,7 @@ export function authLoggedInSuccess(userUID) {
 }
 
 export function authLoggedOutSuccess() {
-  return { type: types.AUTH_LOGGED_OUT_SUCCESS };
+  return {type: types.AUTH_LOGGED_OUT_SUCCESS};
 }
 
 export function authInitialized(user) {
@@ -57,7 +57,6 @@ export function hasLoginToken() {
  */
 export function authLoggedIn() {
   // fetch a copy of the currently logged in user
-  debugger;
   const user = firebase.auth().currentUser;
   return (dispatch) => {
     // a github account is required to use the site,
@@ -74,44 +73,38 @@ export function authLoggedIn() {
 }
 
 export function registerWithEmailPassword(email, password, displayName) {
- debugger;
   return (dispatch) => {
     dispatch(beginAjaxCall());
-    return firebaseApi.registerWithEmailPassword(email,password, displayName)
-      .then( (result) =>{
+    return firebaseApi.registerWithEmailPassword(email, password, displayName)
+      .then((result) => {
         dispatch(registrationCallSuccess());
-    })
+      })
       .catch(error => {
-      debugger;
-      dispatch(registrationCallError(error));
-    });
+        dispatch(registrationCallError(error));
+      });
   };
 }
 
 
-export function signInwithEmailPassword(email,password) {
-  debugger;
+export function signInwithEmailPassword(email, password) {
   return (dispatch) => {
     dispatch(beginAjaxCall());
-    return firebaseApi.signInwithEmailPassword(email,password)
-      .then( (result) => {
-          debugger;
-          localStorage.setItem("token", result.refreshToken);
-          //localStorage.setItem("token", result.credential.accessToken);
+    return firebaseApi.signInwithEmailPassword(email, password)
+      .then((result) => {
+        localStorage.setItem("token", result.refreshToken);
+        //localStorage.setItem("token", result.credential.accessToken);
         dispatch(loginCallSuccess());
         dispatch(notify(`Welcome ${result.displayName}`));
-          dispatch(authLoggedIn());
-        })
+        dispatch(authLoggedIn());
+      })
       .catch(error => {
-        debugger;
         dispatch(loginCallError(error));
-        console.log(error);
+        //console.log(error);
       });
   };
 }
 
 export function signOut() {
-  debugger;
   return (dispatch, getState) => {
     dispatch(beginAjaxCall());
     return firebaseApi.authSignOut()
@@ -121,7 +114,7 @@ export function signOut() {
           dispatch(notify(`Logged out.`));
           dispatch(authLoggedOutSuccess());
           if (getState().routesPermissions.requireAuth
-            .filter(route => route === getState().routing.locationBeforeTransitions.pathname).toString()) {
+              .filter(route => route === getState().routing.locationBeforeTransitions.pathname).toString()) {
             dispatch(push('/login'));
           }
           dispatch(push('/login'));
@@ -138,7 +131,7 @@ export function signOut() {
 function redirect(replace, pathname, nextPathName, error = false) {
   replace({
     pathname: pathname,
-    state: { nextPathname: nextPathName }
+    state: {nextPathname: nextPathName}
   });
   if (error) {
     // toastr.error(error);

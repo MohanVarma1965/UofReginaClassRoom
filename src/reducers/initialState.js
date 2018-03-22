@@ -17,22 +17,20 @@ export default {
   user: {
     isAdmin: undefined,
   },
-  registration : {
-    registrationStatus: '',
-    registrationError :'',
+  registration: {
+    registrationError: '',
     registrationStatus: false
   },
-  login : {
-    loginStatus: '',
-    loginError :'',
+  login: {
+    loginError: '',
     loginStatus: false
   },
   classRoom: {
-    currentClassRoom : 'default',
-    questions:'',
-    studentId:'',
-    listOfAllClasses:'',
-    hosted:'',
-    endHostedQuiz:''
+    currentClassRoom: 'default',
+    questions: '',
+    studentId: '',
+    listOfAllClasses: '',
+    hosted: '',
+    endHostedQuiz: ''
   }
 };

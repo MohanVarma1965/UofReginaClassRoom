@@ -37,7 +37,7 @@ html, body, .root {
 
 .sidePannel-item {
   padding: 10px;
-  color:white;
+  color: white;
   text-decoration: none;
 }
 
@@ -82,14 +82,14 @@ html, body, .root {
 
 .error {
   color: red;
-  display:block;
+  display: block;
 }
 
 .uoRButton {
   min-width: 150px;
 }
 
-.classRooms{
+.classRooms {
   margin: 10px 0px;
 }
 

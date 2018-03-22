@@ -1,18 +1,18 @@
 // modules
-import { AppContainer } from 'react-hot-loader';
+import {AppContainer} from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { syncHistoryWithStore } from 'react-router-redux';
-import { browserHistory } from 'react-router';
+import {Provider} from 'react-redux';
+import {syncHistoryWithStore} from 'react-router-redux';
+import {browserHistory} from 'react-router';
 import 'bootstrap/dist/css/bootstrap.css';
 
 // api
 import FirebaseApi from './api/firebase';
 
 // actions
-import { authInitialized } from './actions/auth';
-import { ajaxCallError, beginAjaxCall } from './actions/ajaxStatus';
+import {authInitialized} from './actions/auth';
+import {ajaxCallError, beginAjaxCall} from './actions/ajaxStatus';
 
 // components
 import App from './containers/App';
@@ -20,7 +20,8 @@ import App from './containers/App';
 // Store
 import initialState from './reducers/initialState';
 import configureStore from './store/configure'; //eslint-disable-line import/default
-import './main.css'
+
+import './main.css';
 
 // store initialization
 export const store = configureStore(initialState);

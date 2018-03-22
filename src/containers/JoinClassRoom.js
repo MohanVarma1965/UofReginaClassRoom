@@ -21,12 +21,12 @@ class JoinClassRoom extends React.Component {
     this.state = {
       studentID: '',
       roomNumber: ''
-          }
+    }
   }
 
   studentID(e) {
     let studentID = e.target.value;
-    this.setState({studentID:studentID});
+    this.setState({studentID: studentID});
   }
 
   roomNumber(e) {
@@ -77,9 +77,7 @@ JoinClassRoom.propTypes = {
 };
 
 function mapStateToProps(state) {
-  debugger;
-  return {
-  };
+  return {};
 }
 
 function mapDispatchToProps(dispatch) {

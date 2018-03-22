@@ -41,7 +41,7 @@
     "no-alert": 0,
     "no-lone-blocks": 0,
     "jsx-quotes": ["error", "prefer-single"],
-    "object-curly-spacing": ["error", "always"],
+    "object-curly-spacing": ["error", "never"],
     "react/display-name": [ 1, {"ignoreTranspilerName": false }],
     "react/forbid-prop-types": [1, {"forbid": ["any"]}],
     "react/jsx-boolean-value": 1,

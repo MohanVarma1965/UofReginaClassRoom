@@ -1,8 +1,8 @@
 import firebaseApi from '../api/firebase';
 import * as types from '../config/constants';
 
-import { authLoggedIn } from './auth';
-import { ajaxCallError, beginAjaxCall } from './ajaxStatus';
+import {authLoggedIn} from './auth';
+import {ajaxCallError, beginAjaxCall} from './ajaxStatus';
 
 function extractUserProperties(firebaseUser) {
 

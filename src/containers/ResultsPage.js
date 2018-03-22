@@ -11,19 +11,17 @@ class ResultsPage extends React.Component {
     super(props);
     this.state = {
       answersArray: []
-    }
+    };
     this.renderResults = this.renderResults.bind(this);
   }
 
   renderResults() {
-    debugger;
     let currentUrl = window.location.href;
     let currentRoom = currentUrl.split('?') ? currentUrl.split('?')[1] : "";
 
     let chartArray = [];
     let classData = this.props.listOfAllClasses[currentRoom];
 
-    console.log(classData);
     let questions = classData.questions;
     let answersArray = [];
     let studentResponse = [];
@@ -33,9 +31,9 @@ class ResultsPage extends React.Component {
 
     questions.map((question, index) => {
       answersArray.push(question.answer);
-    })
+    });
 
-    for (var studentID in studentIDs) {
+    for (let studentID in studentIDs) {
       let correctAnswers = 0;
       if (studentIDs[studentID] && studentIDs[studentID].answers) {
         studentIDs[studentID].answers.map((answer, index) => {
@@ -51,18 +49,16 @@ class ResultsPage extends React.Component {
   }
 
   render() {
-    debugger;
-    debugger;
     console.log(this.props.listOfAllClasses);
     return (<ColumnChart discrete={true} stacked={true} xtitle="StudentIDs" ytitle="Correct Answers" download={true}
                          data={this.renderResults()}/>)
   }
+}
+
+ResultsPage.propTypes = {
 };
 
-ResultsPage.propTypes = {};
-
 function mapStateToProps(state) {
-  debugger;
   return {
     listOfAllClasses: state.classRoomReducer.listOfAllClasses
   };

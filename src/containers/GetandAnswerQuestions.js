@@ -41,7 +41,6 @@ class GetandAnswerQuestions extends React.Component {
   }
 
   answerSelected(e) {
-    debugger;
     let indexes = e.target.value ? e.target.value.split(',') : "";
     let questionIndex = indexes[0];
     let optionIndex = indexes[1];
@@ -97,9 +96,7 @@ class GetandAnswerQuestions extends React.Component {
   }
 
   render() {
-    debugger;
     let renderData;
-    debugger;
 
     if (this.props.hosted && !this.props.endHostedQuiz) {
       let questions = this.props.questions ? this.renderQuestions() :
@@ -116,7 +113,6 @@ class GetandAnswerQuestions extends React.Component {
 GetandAnswerQuestions.propTypes = {};
 
 function mapStateToProps(state) {
-  debugger;
   return {
     questions: state.classJoinReducer.questions,
     currentClassRoom: state.classJoinReducer.currentClassRoom,

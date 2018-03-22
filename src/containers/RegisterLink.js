@@ -19,7 +19,6 @@ class RegisterLink extends React.Component {
   registerSubmit(e) {
     e.preventDefault();
     this.props.actions.register(this.state.emailAddress, this.state.passwordValue, this.state.displayName);
-    debugger;
   }
 
   handleEmailChange(event) {
@@ -39,45 +38,45 @@ class RegisterLink extends React.Component {
       this.props.registrationStatus ?
         <div>
 
-        <div>Your registration is successful , please login with your email password :)</div>
+          <div>Your registration is successful , please login with your email password :)</div>
 
         </div>
         :
         (
           <Form horizontal={true} onSubmit={this.registerSubmit}>
 
-            <FormGroup controlId="formHorizontalEmail">
+            <FormGroup controlId='formHorizontalEmail'>
               <Col componentClass={ControlLabel} sm={2}> Email Address </Col>
               <Col sm={10}>
-                <FormControl type="email" value={this.state.emailAddress} onChange={this.handleEmailChange}
-                             placeholder="Enter email"/>
+                <FormControl type='email' value={this.state.emailAddress} onChange={this.handleEmailChange}
+                             placeholder='Enter email' />
               </Col>
             </FormGroup>
 
-            <FormGroup controlId="formHorizontalPassword">
+            <FormGroup controlId='formHorizontalPassword'>
               <Col componentClass={ControlLabel} sm={2}> Password </Col>
               <Col sm={10}>
-                <FormControl type="password" value={this.state.passwordValue} onChange={this.handlePasswordChange}
-                             placeholder="Enter password"/>
+                <FormControl type='password' value={this.state.passwordValue} onChange={this.handlePasswordChange}
+                             placeholder='Enter password'/>
               </Col>
             </FormGroup>
 
 
-            <FormGroup controlId="">
+            <FormGroup controlId='formHorizontalDisplayName'>
               <Col componentClass={ControlLabel} sm={2}> DisplayName </Col>
               <Col sm={10}>
-                <FormControl type="input" value={this.state.displayName} onChange={this.handleDisplayNameChange}
-                             placeholder="Enter Display Name"/>
+                <FormControl type='input' value={this.state.displayName} onChange={this.handleDisplayNameChange}
+                             placeholder='Enter Display Name'/>
               </Col>
             </FormGroup>
 
             <FormGroup>
               <Col smOffset={2} sm={10}
-                   className="error"> {(this.props.registrationError) ? ('*' + this.props.registrationError) : ''}</Col>
+                   className='error'> {(this.props.registrationError) ? ('*' + this.props.registrationError) : ''}</Col>
             </FormGroup>
             <FormGroup>
               <Col smOffset={2} sm={10}>
-                <Button className="uoRButton" type="submit">Register</Button>
+                <Button className='uoRButton' type='submit'>Register</Button>
               </Col>
             </FormGroup>
 
@@ -102,12 +101,11 @@ function mapDispatchToProps(dispatch) {
 
 
 function mapStateToProps(state) {
-  debugger;
   return {
     registrationError: state.registrationReducer.registrationError,
     registrationStatus: state.registrationReducer.registrationStatus
   };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(RegisterLink);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterLink);
 

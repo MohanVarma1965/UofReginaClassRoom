@@ -16,7 +16,6 @@ class CreateClassRoom extends React.Component {
     e.preventDefault();
 
     this.props.actions.saveRoom(this.state.noOfQuestions);
-    debugger;
   }
 
 
@@ -34,7 +33,7 @@ class CreateClassRoom extends React.Component {
           </Col>
         </FormGroup>
 
-        <CreateQuestion />
+        <CreateQuestion/>
 
         <FormGroup>
           <Col smOffset={2} sm={10}>
@@ -52,7 +51,6 @@ CreateClassRoom.propTypes = {
 };
 
 function mapStateToProps(state) {
-  debugger;
   return {
     auth: state.auth,
     loginStatus: state.loginReducer.loginStatus,

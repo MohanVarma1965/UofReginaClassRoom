@@ -65,8 +65,8 @@ class CreateQuestion extends React.Component {
   nextQuestion() {
 
     let error = (this.state.questionDescription && this.state.optionA && this.state.optionB && this.state.optionC && this.state.optionD && this.state.answer) ? false : true;
-    this.setState({error : error});
-    if(error) {
+    this.setState({error: error});
+    if (error) {
       return;
     }
 
@@ -78,10 +78,16 @@ class CreateQuestion extends React.Component {
 
     this.state.questions.push(currentQuestion);
 
-    debugger;
-    console.log(this.state.questions);
     // Reset the state to normal
-    this.setState({questionDescription: '', optionA: '', optionB: '', optionC: '', optionD: '', answer: '', error :false})
+    this.setState({
+      questionDescription: '',
+      optionA: '',
+      optionB: '',
+      optionC: '',
+      optionD: '',
+      answer: '',
+      error: false
+    })
   }
 
   saveQuiz(e) {
@@ -105,74 +111,74 @@ class CreateQuestion extends React.Component {
 
       <Form horizontal onSubmit={this.saveQuiz}>
 
-        <FormGroup controlId="formHorizontalcurrentRoom">
+        <FormGroup controlId='formHorizontalcurrentRoom'>
           <Col componentClass={ControlLabel} sm={10}> Class Room Number {this.props.currentClassRoom} </Col>
-          <Col componentClass={ControlLabel} sm={10}> Question Number {this.state.questions.length+1} </Col>
+          <Col componentClass={ControlLabel} sm={10}> Question Number {this.state.questions.length + 1} </Col>
 
         </FormGroup>
 
-        <FormGroup controlId="formHorizontalQuestionDescription">
+        <FormGroup controlId='formHorizontalQuestionDescription'>
           <Col componentClass={ControlLabel} sm={6}> Enter Question Description</Col>
           <Col sm={10}>
-            <FormControl type="text" value={this.state.questionDescription} onChange={this.questionDescription}
-                         placeholder="Question Description" required/>
+            <FormControl type='text' value={this.state.questionDescription} onChange={this.questionDescription}
+                         placeholder='Question Description' required/>
           </Col>
         </FormGroup>
 
-        <FormGroup controlId="formHorizontalOptionDescription">
+        <FormGroup controlId='formHorizontalOptionDescription'>
           <Col componentClass={ControlLabel} sm={10}> Enter Option Descriptions </Col>
         </FormGroup>
 
-        <FormGroup controlId="formHorizontalOptionA">
+        <FormGroup controlId='formHorizontalOptionA'>
           <Col sm={10}>
-            <FormControl type="text" value={this.state.optionA} onChange={this.optionA}
-                         placeholder="Description For Option A" required/>
+            <FormControl type='text' value={this.state.optionA} onChange={this.optionA}
+                         placeholder='Description For Option A' required/>
           </Col>
         </FormGroup>
 
-        <FormGroup controlId="formHorizontalOptionB">
+        <FormGroup controlId='formHorizontalOptionB'>
           <Col sm={10}>
-            <FormControl type="text" value={this.state.optionB} onChange={this.optionB}
-                         placeholder="Description For Option B" required/>
+            <FormControl type='text' value={this.state.optionB} onChange={this.optionB}
+                         placeholder='Description For Option B' required/>
           </Col>
         </FormGroup>
 
-        <FormGroup controlId="formHorizontalOptionC">
+        <FormGroup controlId='formHorizontalOptionC'>
           <Col sm={10}>
-            <FormControl type="text" value={this.state.optionC} onChange={this.optionC}
-                         placeholder="Description For Option C" required/>
+            <FormControl type='text' value={this.state.optionC} onChange={this.optionC}
+                         placeholder='Description For Option C' required/>
           </Col>
         </FormGroup>
 
-        <FormGroup controlId="formHorizontalOptionD">
+        <FormGroup controlId='formHorizontalOptionD'>
           <Col sm={10}>
-            <FormControl type="text" value={this.state.optionD} onChange={this.optionD}
-                         placeholder="Description For Option D" required/>
+            <FormControl type='text' value={this.state.optionD} onChange={this.optionD}
+                         placeholder='Description For Option D' required/>
           </Col>
         </FormGroup>
 
-        <FormGroup controlId="formHorizontalAnswer">
+        <FormGroup controlId='formHorizontalAnswer'>
           <Col componentClass={ControlLabel} sm={10}> Select Correct Answer
-            <select required className="questionFormSelect" value={this.state.answer} onChange={this.answer}>
-              <option value="0">A</option>
-              <option value="1">B</option>
-              <option value="2">C</option>
-              <option value="3">D</option>
+            <select required className='questionFormSelect' value={this.state.answer} onChange={this.answer}>
+              <option value='0'>A</option>
+              <option value='1'>B</option>
+              <option value='2'>C</option>
+              <option value='3'>D</option>
             </select>
           </Col>
         </FormGroup>
 
         <FormGroup>
           <Col sm={10}>
-            <div className="error"> {this.state.error ? "*Please enter all fields" : "" }</div>
+            <div className='error'> {this.state.error ? "*Please enter all fields" : ""}</div>
           </Col>
         </FormGroup>
 
         <FormGroup>
           <Col sm={10}>
-            <Button onClick={this.nextQuestion} className="questionFormButton"> Next Question </Button>
-            <Button type="submit" className=" uoRButton save"> Save Quiz </Button>
-            <Button className="uoRButton questionFormButton quit" onClick={this.deleteRoom}> Delete Quiz</Button>
+            <Button onClick={this.nextQuestion} className='questionFormButton'> Next Question </Button>
+            <Button type='submit' className='uoRButton save'> Save Quiz </Button>
+            <Button className='uoRButton questionFormButton quit' onClick={this.deleteRoom}> Delete Quiz</Button>
           </Col>
         </FormGroup>
 
@@ -186,7 +192,6 @@ CreateQuestion.propTypes = {
 };
 
 function mapStateToProps(state) {
-  debugger;
   return {
     auth: state.auth,
     user: state.user,

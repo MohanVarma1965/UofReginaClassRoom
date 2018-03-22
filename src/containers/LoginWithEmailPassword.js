@@ -19,7 +19,6 @@ class LoginWithEmailPassword extends React.Component {
     e.preventDefault();
 
     this.props.actions.signInwithEmailPassword(this.state.emailAddress, this.state.passwordValue);
-    debugger;
   }
 
   handleEmailChange(event) {
@@ -73,7 +72,6 @@ LoginWithEmailPassword.propTypes = {
 };
 
 function mapStateToProps(state) {
-  debugger;
   return {
     auth: state.auth,
     loginStatus: state.loginReducer.loginStatus,

@@ -14,7 +14,7 @@ class LecturerHomePage extends React.Component {
     this.getAllClasses = this.getAllClasses.bind(this);
     this.displayAllEligibleClasses = this.displayAllEligibleClasses.bind(this);
     this.endHostedQuiz = this.endHostedQuiz.bind(this);
-    this.resetHostedQuiz= this.resetHostedQuiz.bind(this);
+    this.resetHostedQuiz = this.resetHostedQuiz.bind(this);
     this.hostQuiz = this.hostQuiz.bind(this);
     this.state = {classRoomNumber: '', showGetAllRoomButton: true}
   }
@@ -52,7 +52,6 @@ class LecturerHomePage extends React.Component {
   }
 
   displayAllEligibleClasses() {
-    debugger;
     let listOfClasses = this.props.listOfAllClasses;
     let userID = this.props.user.uid;
 
@@ -64,16 +63,18 @@ class LecturerHomePage extends React.Component {
         data.push(
           <div className="classRooms">
             <Link to={`${resultsPage}`}><Button className="uoRButton">{prop}</Button></Link>
-            <Button className="save uoRButton" disabled={listOfClasses[prop].hosted ? true : false} onClick={this.hostQuiz} value={prop}> Start
+            <Button className="save uoRButton" disabled={listOfClasses[prop].hosted ? true : false}
+                    onClick={this.hostQuiz} value={prop}> Start
               Hosting </Button>
-            <Button className="quit uoRButton" disabled={listOfClasses[prop].hosted ? listOfClasses[prop].endHostedQuiz ? true : false :true} onClick={this.endHostedQuiz}
+            <Button className="quit uoRButton"
+                    disabled={listOfClasses[prop].hosted ? listOfClasses[prop].endHostedQuiz ? true : false : true}
+                    onClick={this.endHostedQuiz}
                     value={prop}> End Hosting</Button>
             <Button className="save uoRButton" onClick={this.resetHostedQuiz} value={prop}> Reset </Button>
           </div>
         )
       }
     }
-    debugger;
     return data;
   }
 
@@ -109,7 +110,8 @@ class LecturerHomePage extends React.Component {
         {this.props.listOfAllClasses ?
           <Form onSubmit={this.getResults}>
             <FormGroup controlId="GetListOfClasses">
-              {this.state.showGetAllRoomButton ? "" :<Col componentClass={ControlLabel} sm={10}> Click on each room to see the Students Performance </Col> }
+              {this.state.showGetAllRoomButton ? "" :
+                <Col componentClass={ControlLabel} sm={10}> Click on each room to see the Students Performance </Col>}
               <Col smOffset={2} sm={10}>
                 {this.displayAllEligibleClasses()}
               </Col>
@@ -127,7 +129,6 @@ LecturerHomePage.propTypes = {
 };
 
 function mapStateToProps(state) {
-  debugger;
   return {
     auth: state.auth,
     loginStatus: state.loginReducer.loginStatus,

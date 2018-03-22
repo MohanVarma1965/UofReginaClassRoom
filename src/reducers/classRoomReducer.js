@@ -3,17 +3,16 @@ import initialState from './initialState';
 
 export default function classRoomReducer(state = initialState.classRoom, action) {
 
-  debugger;
   switch (action.type) {
 
     case types.CLASS_CREATION_SUCCESS:
       return Object.assign({}, state, {
-        currentClassRoom : action.payload
+        currentClassRoom: action.payload
       });
 
     case types.GET_ALL_CLASSES_SUCCESS:
       return Object.assign({}, state, {
-        listOfAllClasses : action.payload
+        listOfAllClasses: action.payload
       });
 
     default:

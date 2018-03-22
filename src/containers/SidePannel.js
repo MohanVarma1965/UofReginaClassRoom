@@ -12,14 +12,13 @@ class SidePannel extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
 
-    this.state = {emailAddress: '', passwordValue: ''}
+    this.state = {emailAddress: '', passwordValue: ''};
   }
 
   loginSubmit(e) {
     e.preventDefault();
 
     this.props.actions.signInwithEmailPassword(this.state.emailAddress, this.state.passwordValue);
-    debugger;
   }
 
   handleEmailChange(event) {
@@ -33,48 +32,51 @@ class SidePannel extends React.Component {
 
   render() {
     return (
-      <div className="sidePannel">
+      <div className='sidePannel'>
 
         {this.props.auth.isLogged ?
           "" :
           <Link to='/login'>
-            <div className="sidePannel-item"> Login</div>
+            <div className='sidePannel-item'> Login</div>
           </Link>
         }
         {this.props.auth.isLogged ?
-          "":
+          "" :
           <Link to='/register'>
-            <div className="sidePannel-item"> Register </div>
+            <div className='sidePannel-item'> Register</div>
           </Link>
         }
 
         <Link to='/lecturerHomepage'>
-          <div className="sidePannel-item"> Lecturer Homepage </div>
+          <div className='sidePannel-item'> Lecturer Homepage</div>
         </Link>
 
         <Link to='/joinClassRoom'>
-          <div className="sidePannel-item"> Join a Room </div>
+          <div className='sidePannel-item'> Join a Room</div>
         </Link>
 
         <Link to='/lecturerHomepage'>
-          <div className="sidePannel-item"> About UoRClassRoom </div>
+          <div className='sidePannel-item'> About UoRClassRoom</div>
         </Link>
       </div>
     );
   }
-};
+}
 
 SidePannel.propTypes = {
+  action: React.PropTypes.func,
+  actions: React.PropTypes.func.isRequired,
+  auth: React.PropTypes.object,
   signInwithEmailPassword: React.PropTypes.func.isRequired,
-  signOut: React.PropTypes.func.isRequired,
+  signOut: React.PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth,
     loginStatus: state.loginReducer.loginStatus,
     loginError: state.loginReducer.loginError,
     user: state.user,
+    auth: state.auth
   };
 }
 

@@ -5,12 +5,11 @@ export default function registrationReducer(state = initialState.registration, a
   switch (action.type) {
 
     case types.USER_REGISTRATION_SUCCESS:
-      return Object.assign({}, state, { registrationStatus: true, registrationError: ''});
+      return Object.assign({}, state, {registrationStatus: true, registrationError: ''});
 
     case types.USER_REGISTRATION_ERROR:
-      debugger;
       return Object.assign({}, state, {
-        registrationStatus : false, registrationError : (action.payload) ? action.payload : "Unknown Error :("
+        registrationStatus: false, registrationError: (action.payload) ? action.payload : "Unknown Error :("
       });
 
     default:
