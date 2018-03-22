@@ -61,16 +61,16 @@ class LecturerHomePage extends React.Component {
       if (listOfClasses[prop].owner == userID) {
         let resultsPage = `/resultsPage?${prop}`;
         data.push(
-          <div className="classRooms">
-            <Link to={`${resultsPage}`}><Button className="uoRButton">{prop}</Button></Link>
-            <Button className="save uoRButton" disabled={listOfClasses[prop].hosted ? true : false}
+          <div className='classRooms'>
+            <Link to={`${resultsPage}`}><Button className='uoRButton'>{prop}</Button></Link>
+            <Button className='save uoRButton' disabled={listOfClasses[prop].hosted ? true : false}
                     onClick={this.hostQuiz} value={prop}> Start
               Hosting </Button>
-            <Button className="quit uoRButton"
+            <Button className='quit uoRButton'
                     disabled={listOfClasses[prop].hosted ? listOfClasses[prop].endHostedQuiz ? true : false : true}
                     onClick={this.endHostedQuiz}
                     value={prop}> End Hosting</Button>
-            <Button className="save uoRButton" onClick={this.resetHostedQuiz} value={prop}> Reset </Button>
+            <Button className='save uoRButton' onClick={this.resetHostedQuiz} value={prop}> Reset </Button>
           </div>
         )
       }
@@ -82,34 +82,34 @@ class LecturerHomePage extends React.Component {
     return (
       <div>
         <Form horizontal onSubmit={this.createRoom}>
-          <FormGroup controlId="formHorizontalRoomNumber">
+          <FormGroup controlId='formHorizontalRoomNumber'>
             <Col componentClass={ControlLabel} sm={2}> Enter Room Number </Col>
             <Col sm={10}>
-              <FormControl type="text" value={this.state.classRoomNumber} onChange={this.enterRoomNo}
-                           placeholder="Room Number" required/>
+              <FormControl type='text' value={this.state.classRoomNumber} onChange={this.enterRoomNo}
+                           placeholder='Room Number' required/>
             </Col>
           </FormGroup>
 
           <FormGroup>
             <Col smOffset={2} sm={10}>
-              <Button type="submit" className="uoRButton"> Create Room </Button>
+              <Button type='submit' className='uoRButton'> Create Room </Button>
             </Col>
           </FormGroup>
         </Form>
 
         <Form onSubmit={this.getAllClasses}>
-          {this.state.showGetAllRoomButton ? <FormGroup controlId="GetListOfClasses">
+          {this.state.showGetAllRoomButton ? <FormGroup controlId='GetListOfClasses'>
             <Col componentClass={ControlLabel} sm={10}> In order to see all the classes available click on the below
               link </Col>
             <Col smOffset={2} sm={10}>
-              <Button type="submit" className="uoRButton"> Get Rooms </Button>
+              <Button type='submit' className='uoRButton'> Get Rooms </Button>
             </Col>
           </FormGroup> : ""}
         </Form>
 
         {this.props.listOfAllClasses ?
           <Form onSubmit={this.getResults}>
-            <FormGroup controlId="GetListOfClasses">
+            <FormGroup controlId='GetListOfClasses'>
               {this.state.showGetAllRoomButton ? "" :
                 <Col componentClass={ControlLabel} sm={10}> Click on each room to see the Students Performance </Col>}
               <Col smOffset={2} sm={10}>
@@ -122,7 +122,7 @@ class LecturerHomePage extends React.Component {
       </div>
     );
   }
-};
+}
 
 LecturerHomePage.propTypes = {
   saveRoomAction: React.PropTypes.func.isRequired,

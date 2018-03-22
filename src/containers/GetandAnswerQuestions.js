@@ -106,7 +106,7 @@ class GetandAnswerQuestions extends React.Component {
       return this.props.hosted ? this.props.endHostedQuiz ?
         <div className='error'> The Lecturer has ended the quiz</div> :
         "" : <div className='error'> The Quiz is not hosted</div>
-    };
+    }
   }
 }
 

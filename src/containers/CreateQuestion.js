@@ -42,11 +42,11 @@ class CreateQuestion extends React.Component {
   }
 
   optionA(e) {
-    this.setState({optionA: e.target.value});
+    this.setState({optionA: e.target.value})
   }
 
   optionB(e) {
-    this.setState({optionB: e.target.value});
+    this.stState({optionB: e.target.value});
   }
 
   optionC(e) {
@@ -185,7 +185,7 @@ class CreateQuestion extends React.Component {
       </Form>
     );
   }
-};
+}
 
 CreateQuestion.propTypes = {
   saveRoomAction: React.PropTypes.func.isRequired,

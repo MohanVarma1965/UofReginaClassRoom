@@ -50,7 +50,7 @@ class ResultsPage extends React.Component {
 
   render() {
     console.log(this.props.listOfAllClasses);
-    return (<ColumnChart discrete={true} stacked={true} xtitle="StudentIDs" ytitle="Correct Answers" download={true}
+    return (<ColumnChart discrete={true} stacked={true} xtitle='StudentIDs' ytitle='Correct Answers' download={true}
                          data={this.renderResults()}/>)
   }
 }

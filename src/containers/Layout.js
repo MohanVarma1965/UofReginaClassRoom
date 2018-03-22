@@ -18,11 +18,11 @@ class Layout extends React.Component {
   render() {
     const {auth, actions, loading, user} = this.props;
     return (
-      <div className="layout-container">
+      <div className='layout-container'>
         <PageHeader/>
-        <div className="pannels-container">
+        <div className='pannels-container'>
           <SidePannel/>
-          <div className="mainPannel">
+          <div className='mainPannel'>
             {this.props.children}
           </div>
         </div>

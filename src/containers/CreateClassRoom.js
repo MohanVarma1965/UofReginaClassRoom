@@ -24,25 +24,25 @@ class CreateClassRoom extends React.Component {
 
         <ControlLabel> Class Room Number </ControlLabel>
 
-        <FormGroup controlId="formHorizontalCreateRoom">
+        <FormGroup controlId='formHorizontalCreateRoom'>
           <Col componentClass={ControlLabel} sm={2}> Enter Number of Questions </Col>
           <Col sm={10}>
-            <FormControl type="text" value={this.state.noOfQuestions} onChange={this.noOfQuestions}
-                         placeholder="No of Questions"/>
+            <FormControl type='text' value={this.state.noOfQuestions} onChange={this.noOfQuestions}
+                         placeholder='No of Questions'/>
           </Col>
         </FormGroup>
 
         <CreateQuestion/>
         <FormGroup>
           <Col smOffset={2} sm={10}>
-            <Button type="submit"> Save Room </Button>
+            <Button type='submit'> Save Room </Button>
           </Col>
         </FormGroup>
 
       </Form>
     );
   }
-};
+}
 
 CreateClassRoom.propTypes = {
 };

@@ -64,7 +64,7 @@ class LoginWithEmailPassword extends React.Component {
       </Form>
     );
   }
-};
+}
 
 LoginWithEmailPassword.propTypes = {
   signInwithEmailPassword: React.PropTypes.func.isRequired,

@@ -84,7 +84,7 @@ class RegisterLink extends React.Component {
         );
     return result;
   }
-};
+}
 
 RegisterLink.propTypes = {
   action: React.PropTypes.func.isRequired,
