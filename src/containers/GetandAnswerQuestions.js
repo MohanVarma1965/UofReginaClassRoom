@@ -4,10 +4,8 @@ import {
   FormGroup,
   Form,
   ControlLabel,
-  FormControl,
   Col,
   Button,
-  ButtonToolbar,
   Radio
 } from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
@@ -52,7 +50,7 @@ class GetandAnswerQuestions extends React.Component {
 
   submitQuiz(e) {
     e.preventDefault();
-    let error = this.checkForError()
+    let error = this.checkForError();
     this.setState({error: error});
 
     if (error) {
@@ -110,7 +108,9 @@ class GetandAnswerQuestions extends React.Component {
   }
 }
 
-GetandAnswerQuestions.propTypes = {};
+GetandAnswerQuestions.propTypes = {
+  actions: React.PropTypes.object.isRequired
+};
 
 function mapStateToProps(state) {
   return {

@@ -40,7 +40,7 @@ class ResultsPage extends React.Component {
           if (answer == answersArray[index]) {
             correctAnswers++;
           }
-        })
+        });
       }
       studentResponse.push([studentID, correctAnswers]);
     }
@@ -49,7 +49,6 @@ class ResultsPage extends React.Component {
   }
 
   render() {
-    console.log(this.props.listOfAllClasses);
     return (<ColumnChart discrete={true} stacked={true} xtitle='StudentIDs' ytitle='Correct Answers' download={true}
                          data={this.renderResults()}/>)
   }

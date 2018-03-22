@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {FormGroup, Form, ControlLabel, FormControl, HelpBlock, Col, Button} from 'react-bootstrap';
+import {FormGroup, Form, ControlLabel, FormControl, Col, Button} from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
 
 class CreateClassRoom extends React.Component {
@@ -32,7 +32,6 @@ class CreateClassRoom extends React.Component {
           </Col>
         </FormGroup>
 
-        <CreateQuestion/>
         <FormGroup>
           <Col smOffset={2} sm={10}>
             <Button type='submit'> Save Room </Button>
@@ -45,6 +44,7 @@ class CreateClassRoom extends React.Component {
 }
 
 CreateClassRoom.propTypes = {
+  actions: React.PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {

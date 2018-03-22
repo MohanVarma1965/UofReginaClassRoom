@@ -125,6 +125,8 @@ class LecturerHomePage extends React.Component {
 }
 
 LecturerHomePage.propTypes = {
+  actions: React.PropTypes.object.isRequired,
+  auth: React.PropTypes.object.isRequired,
   saveRoomAction: React.PropTypes.func.isRequired,
 };
 

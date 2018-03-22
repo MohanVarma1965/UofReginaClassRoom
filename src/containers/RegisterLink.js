@@ -13,7 +13,7 @@ class RegisterLink extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleDisplayNameChange = this.handleDisplayNameChange.bind(this);
-    this.state = {emailAddress: '', passwordValue: '', displayName: ''}
+    this.state = {emailAddress: '', passwordValue: '', displayName: ''};
   }
 
   registerSubmit(e) {
@@ -87,7 +87,7 @@ class RegisterLink extends React.Component {
 }
 
 RegisterLink.propTypes = {
-  action: React.PropTypes.func.isRequired,
+  actions: React.PropTypes.object.isRequired
 };
 
 function mapDispatchToProps(dispatch) {

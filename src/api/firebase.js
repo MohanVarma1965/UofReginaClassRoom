@@ -60,7 +60,7 @@ class FirebaseApi {
       endHostedQuiz: false,
       questions: [],
       studentIDs: []
-    }
+    };
 
     return new Promise((resolve, reject) => {
       firebase
@@ -114,7 +114,7 @@ class FirebaseApi {
 
     let modifiedValue = {
       studentID: studentID
-    }
+    };
 
     return new Promise((resolve, reject) => {
       firebase
@@ -134,7 +134,7 @@ class FirebaseApi {
 
   static hostQuiz(currentClassRoom) {
     return new Promise((resolve, reject) => {
-      var updates = {};
+      let updates = {};
       updates['/hosted/'] = true;
       firebase
         .database()
@@ -145,7 +145,7 @@ class FirebaseApi {
 
   static endHostedQuiz(currentClassRoom) {
     return new Promise((resolve, reject) => {
-      var updates = {};
+      let updates = {};
       updates['/endHostedQuiz/'] = true;
       firebase
         .database()
@@ -156,7 +156,7 @@ class FirebaseApi {
 
   static resetHostedQuiz(currentClassRoom) {
     return new Promise((resolve, reject) => {
-      var updates = {};
+      let updates = {};
       updates['/endHostedQuiz/'] = false;
       updates['/hosted/'] = false;
       firebase
@@ -228,12 +228,12 @@ class FirebaseApi {
   static registerWithEmailPassword(email, password, displayName) {
     return firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
       firebase.auth().currentUser.updateProfile({displayName: displayName});
-      console.log(firebase.database().currentUser);
-    })
+      // console.log(firebase.database().currentUser);
+    });
   }
 
   static signInwithEmailPassword(email, password) {
-    return firebase.auth().signInWithEmailAndPassword(email, password)
+    return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
 }

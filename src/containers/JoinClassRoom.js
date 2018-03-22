@@ -9,7 +9,7 @@ import {
   Button,
 } from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
-import {joinRoom} from '../actions/studentActions'
+import {joinRoom} from '../actions/studentActions';
 
 class JoinClassRoom extends React.Component {
 
@@ -21,7 +21,7 @@ class JoinClassRoom extends React.Component {
     this.state = {
       studentID: '',
       roomNumber: ''
-    }
+    };
   }
 
   studentID(e) {
@@ -37,7 +37,6 @@ class JoinClassRoom extends React.Component {
   joinRoom(e) {
     e.preventDefault();
     this.props.actions.joinRoom(this.state.studentID, this.state.roomNumber);
-    console.log("this is to Join the quiz");
   }
 
 
@@ -73,7 +72,8 @@ class JoinClassRoom extends React.Component {
 }
 
 JoinClassRoom.propTypes = {
-  saveRoomAction: React.PropTypes.func.isRequired,
+  actions: React.PropTypes.object.isRequired,
+  saveRoomAction: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

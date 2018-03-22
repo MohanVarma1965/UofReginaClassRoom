@@ -9,7 +9,7 @@ import {
   Button,
 } from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
-import {saveQuiz, deleteRoom} from '../actions/lecturerActions'
+import {saveQuiz, deleteRoom} from '../actions/lecturerActions';
 
 class CreateQuestion extends React.Component {
 
@@ -33,7 +33,7 @@ class CreateQuestion extends React.Component {
       answer: '',
       questions: [],
       error: false
-    }
+    };
   }
 
 
@@ -42,7 +42,7 @@ class CreateQuestion extends React.Component {
   }
 
   optionA(e) {
-    this.setState({optionA: e.target.value})
+    this.setState({optionA: e.target.value});
   }
 
   optionB(e) {
@@ -87,7 +87,7 @@ class CreateQuestion extends React.Component {
       optionD: '',
       answer: '',
       error: false
-    })
+    });
   }
 
   saveQuiz(e) {
@@ -95,11 +95,7 @@ class CreateQuestion extends React.Component {
     e.preventDefault();
 
     this.nextQuestion();
-    console.log(this.state.questions);
     this.props.actions.saveQuiz(this.state.questions, this.props.currentClassRoom);
-
-    console.log("this is to save the quiz");
-
   }
 
   deleteRoom() {
@@ -188,6 +184,7 @@ class CreateQuestion extends React.Component {
 }
 
 CreateQuestion.propTypes = {
+  actions: React.PropTypes.object.isRequired,
   saveRoomAction: React.PropTypes.func.isRequired,
 };
 

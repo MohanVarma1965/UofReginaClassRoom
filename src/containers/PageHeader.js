@@ -28,7 +28,9 @@ class PageHeader extends React.Component {
 }
 
 PageHeader.propTypes = {
-  action: React.PropTypes.func.isRequired,
+  actions: React.PropTypes.object.isRequired,
+  auth: React.PropTypes.object.isRequired,
+  user: React.PropTypes.object.isRequired
 };
 
 

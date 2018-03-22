@@ -67,6 +67,7 @@ class LoginWithEmailPassword extends React.Component {
 }
 
 LoginWithEmailPassword.propTypes = {
+  actions: React.PropTypes.object.isRequired,
   signInwithEmailPassword: React.PropTypes.func.isRequired,
   signOut: React.PropTypes.func.isRequired,
 };
