@@ -1,8 +1,8 @@
 export default {
-  apiKey: "AIzaSyDDYxWdxBzAhtIgWGAaMR_pkY24ak1o00A",
-  authDomain: "labtest-242ce.firebaseapp.com",
-  databaseURL: "https://labtest-242ce.firebaseio.com",
-  projectId: "labtest-242ce",
-  storageBucket: "labtest-242ce.appspot.com",
-  messagingSenderId: "738015510804"
+  apiKey: "AIzaSyBHITPHtiGiAYZYA9vIwbp90_Qa80bZRm8",
+  authDomain: "uoreginaclassroom.firebaseapp.com",
+  databaseURL: "https://uoreginaclassroom.firebaseio.com",
+  projectId: "uoreginaclassroom",
+  storageBucket: "uoreginaclassroom.appspot.com",
+  messagingSenderId: "1061491529031"
 };

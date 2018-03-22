@@ -46,7 +46,7 @@ class CreateQuestion extends React.Component {
   }
 
   optionB(e) {
-    this.stState({optionB: e.target.value});
+    this.setState({optionB: e.target.value});
   }
 
   optionC(e) {
