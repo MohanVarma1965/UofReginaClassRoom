@@ -35,6 +35,7 @@ class ResultsPage extends React.Component {
 
     for (let studentID in studentIDs) {
       let correctAnswers = 0;
+      let percentage = 0;
       if (studentIDs[studentID] && studentIDs[studentID].answers) {
         studentIDs[studentID].answers.map((answer, index) => {
           if (answer == answersArray[index]) {
@@ -42,14 +43,20 @@ class ResultsPage extends React.Component {
           }
         });
       }
-      studentResponse.push([studentID, correctAnswers]);
+
+      if(questions && questions.length){
+        percentage = correctAnswers/questions.length * 100;
+      }
+      studentResponse.push([studentID, percentage]);
     }
+
+
 
     return studentResponse;
   }
 
   render() {
-    return (<ColumnChart discrete={true} stacked={true} xtitle='StudentIDs' ytitle='Correct Answers' download={true}
+    return (<ColumnChart suffix="%" discrete={true} stacked={true} xtitle='StudentIDs' ytitle='Correct Answers' download={true}
                          data={this.renderResults()}/>)
   }
 }
