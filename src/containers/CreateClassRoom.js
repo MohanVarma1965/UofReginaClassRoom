@@ -8,8 +8,7 @@ class CreateClassRoom extends React.Component {
   constructor(props) {
     super(props);
     this.saveRoom = this.saveRoom.bind(this);
-
-    this.state = {noOfQuestions: ''}
+    this.state = {noOfQuestions: ''};
   }
 
   saveRoom(e) {
@@ -34,7 +33,6 @@ class CreateClassRoom extends React.Component {
         </FormGroup>
 
         <CreateQuestion/>
-
         <FormGroup>
           <Col smOffset={2} sm={10}>
             <Button type="submit"> Save Room </Button>
@@ -47,7 +45,6 @@ class CreateClassRoom extends React.Component {
 };
 
 CreateClassRoom.propTypes = {
-  saveRoomAction: React.PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -62,7 +59,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
-      saveRoomAction,
     }, dispatch)
   };
 }

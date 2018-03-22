@@ -11,7 +11,7 @@ import {
   Radio
 } from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
-import {submitQuiz} from '../actions/studentActions'
+import {submitQuiz} from '../actions/studentActions';
 
 class GetandAnswerQuestions extends React.Component {
 
@@ -21,7 +21,7 @@ class GetandAnswerQuestions extends React.Component {
       answer: '',
       error: false,
       answersArray: []
-    }
+    };
     this.submitQuiz = this.submitQuiz.bind(this);
     this.answerSelected = this.answerSelected.bind(this);
     this.renderQuestions = this.renderQuestions.bind(this);
@@ -71,25 +71,25 @@ class GetandAnswerQuestions extends React.Component {
               <Col componentClass={ControlLabel} sm={10}> {questionIndex + 1 + ")"} {question.question} </Col>
               <Col smOffset={4} sm={10}>
                 {question.options.map((option, optionIndex) => {
-                  return (<Radio required name="radioGroup" onChange={this.answerSelected}
+                  return (<Radio required name='radioGroup' onChange={this.answerSelected}
                                  value={questionIndex + ',' + optionIndex}>
                     {option}
-                  </Radio>)
+                  </Radio>);
                 })}
               </Col>
             </ FormGroup>
-          </Form>)
+          </Form>);
       })}
 
       <FormGroup>
         <Col sm={10}>
-          <div className="error"> {this.state.error ? "*Please enter all fields" : ""}</div>
+          <div className='error'> {this.state.error ? "*Please enter all fields" : ""}</div>
         </Col>
       </FormGroup>
 
       <FormGroup>
         <Col smOffset={2} sm={10}>
-          <Button type="submit"> Submit Quiz </Button>
+          <Button type='submit'> Submit Quiz </Button>
         </Col>
       </FormGroup>
     </Form>
@@ -101,14 +101,14 @@ class GetandAnswerQuestions extends React.Component {
     if (this.props.hosted && !this.props.endHostedQuiz) {
       let questions = this.props.questions ? this.renderQuestions() :
         <div> There are no questions to display, please re check and join the correct class room</div>;
-      return questions
+      return questions;
     } else {
       return this.props.hosted ? this.props.endHostedQuiz ?
-        <div className="error"> The Lecturer has ended the quiz</div> :
-        "" : <div className="error"> The Quiz is not hosted</div>
-    }
+        <div className='error'> The Lecturer has ended the quiz</div> :
+        "" : <div className='error'> The Quiz is not hosted</div>
+    };
   }
-};
+}
 
 GetandAnswerQuestions.propTypes = {};
 

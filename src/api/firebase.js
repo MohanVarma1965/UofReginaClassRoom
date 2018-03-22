@@ -40,7 +40,7 @@ class FirebaseApi {
         .ref('users/classRooms').child(currentClassRoom).child('questions')
         .set(questions, (error) => {
           if (error) {
-            console.log(error);
+            // console.log(error);
             reject(error);
           } else {
             // console.log("data set correctly");
@@ -68,10 +68,9 @@ class FirebaseApi {
         .ref('users/classRooms').child(classRoom)
         .set(valuemod, (error) => {
           if (error) {
-            console.log(error);
+            // console.log(error);
             reject(error);
           } else {
-            // console.log("data set correctly");
             resolve(classRoom);
           }
         });

@@ -15,12 +15,12 @@ export function joinRoom(studentID, roomNumber) {
           dispatch(classJoinCallSuccess(resolvedValues[0], roomNumber, studentID, resolvedValues[1], resolvedValues[2]));
         }).catch(error => {
           // dispatch(loginCallError(error));
-          console.log(error);
+          // console.log(error);
         });
       })
       .catch(error => {
         // dispatch(loginCallError(error));
-        console.log(error);
+        // console.log(error);
       });
   };
 }
@@ -35,7 +35,7 @@ export function submitQuiz(currentClassRoom, studentID, answers) {
       })
       .catch(error => {
         // dispatch(loginCallError(error));
-        console.log(error);
+        // console.log(error);
       });
   };
 }
@@ -51,7 +51,7 @@ export function deleteRoom(currentClassRoom) {
       })
       .catch(error => {
         // dispatch(loginCallError(error));
-        console.log(error);
+        // console.log(error);
       });
   };
 }

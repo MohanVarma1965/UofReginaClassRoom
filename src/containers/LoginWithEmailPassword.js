@@ -33,31 +33,31 @@ class LoginWithEmailPassword extends React.Component {
   render() {
     return (
       <Form horizontal={true} onSubmit={this.loginSubmit}>
-        <FormGroup controlId="formHorizontalEmail">
+        <FormGroup controlId='formHorizontalEmail'>
           <Col componentClass={ControlLabel} sm={2}> Email Address </Col>
           <Col sm={10}>
-            <FormControl required type="email" value={this.state.emailAddress} onChange={this.handleEmailChange}
-                         placeholder="Enter email"/>
+            <FormControl required type='email' value={this.state.emailAddress} onChange={this.handleEmailChange}
+                         placeholder='Enter email'/>
           </Col>
         </FormGroup>
 
-        <FormGroup controlId="formHorizontalPassword">
+        <FormGroup controlId='formHorizontalPassword'>
           <Col componentClass={ControlLabel} sm={2}> Password </Col>
           <Col sm={10}>
-            <FormControl required type="password" value={this.state.passwordValue} onChange={this.handlePasswordChange}
-                         placeholder="Enter password"/>
+            <FormControl required type='password' value={this.state.passwordValue} onChange={this.handlePasswordChange}
+                         placeholder='Enter password'/>
           </Col>
         </FormGroup>
 
         <FormGroup>
           <Col smOffset={2} sm={10}>
-            <div className="error"> {(this.props.loginError) ? ('*' + this.props.loginError) : ''}</div>
+            <div className='error'> {(this.props.loginError) ? ('*' + this.props.loginError) : ''}</div>
           </Col>
         </FormGroup>
 
         <FormGroup>
           <Col smOffset={2} sm={10}>
-            <Button className="uoRButton" type="submit">Login </Button>
+            <Button className='uoRButton' type='submit'>Login </Button>
           </Col>
         </FormGroup>
 

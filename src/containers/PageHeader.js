@@ -13,14 +13,14 @@ class PageHeader extends React.Component {
 
   render() {
     return (
-      <div className="header-container">
-        <div className="logo">UoRClassRoom</div>
-        <div className="header-name">
+      <div className='header-container'>
+        <div className='logo'>UoRClassRoom</div>
+        <div className='header-name'>
           {this.props.auth.isLogged
           && this.props.user
           && this.props.user.displayName ? ("Welcome " + this.props.user.displayName) : ""}</div>
         {this.props.auth.isLogged ?
-          <Button className="uoRButton" onClick={this.props.actions.signOut}> Sign out </Button> : ""}
+          <Button className='uoRButton' onClick={this.props.actions.signOut}> Sign out </Button> : ""}
       </div>
     )
 

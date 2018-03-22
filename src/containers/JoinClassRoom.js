@@ -46,25 +46,25 @@ class JoinClassRoom extends React.Component {
 
       <Form horizontal onSubmit={this.joinRoom}>
 
-        <FormGroup controlId="formHorizontalStudentID">
+        <FormGroup controlId='formHorizontalStudentID'>
           <Col componentClass={ControlLabel} sm={10}> Enter StudentID</Col>
           <Col sm={10}>
-            <FormControl type="text" value={this.state.studentID} onChange={this.studentID}
-                         placeholder="Student ID" required/>
+            <FormControl type='text' value={this.state.studentID} onChange={this.studentID}
+                         placeholder='Student ID' required/>
           </Col>
         </FormGroup>
 
-        <FormGroup controlId="formHorizontalRoomNumber">
+        <FormGroup controlId='formHorizontalRoomNumber'>
           <Col componentClass={ControlLabel} sm={10}> Enter Class Room Number to Join</Col>
           <Col sm={10}>
-            <FormControl type="text" value={this.state.roomNumber} onChange={this.roomNumber}
-                         placeholder="Class Room Number" required/>
+            <FormControl type='text' value={this.state.roomNumber} onChange={this.roomNumber}
+                         placeholder='Class Room Number' required/>
           </Col>
         </FormGroup>
 
         <FormGroup>
           <Col sm={10}>
-            <Button type="submit" className="uoRButton"> Join Room </Button>
+            <Button type='submit' className='uoRButton'> Join Room </Button>
           </Col>
         </FormGroup>
       </Form>
