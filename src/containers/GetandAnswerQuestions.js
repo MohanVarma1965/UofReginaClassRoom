@@ -69,7 +69,7 @@ class GetandAnswerQuestions extends React.Component {
               <Col componentClass={ControlLabel} sm={10}> {questionIndex + 1 + ")"} {question.question} </Col>
               <Col smOffset={4} sm={10}>
                 {question.options.map((option, optionIndex) => {
-                  return (<Radio required name='radioGroup' onChange={this.answerSelected}
+                  return (<Radio className='individual-option' required name='radioGroup' onChange={this.answerSelected}
                                  value={questionIndex + ',' + optionIndex}>
                     {option}
                   </Radio>);

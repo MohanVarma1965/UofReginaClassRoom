@@ -107,3 +107,11 @@ html, body, .root {
 .questionsGroup {
   border-bottom: 1px solid;
 }
+
+.individual-option {
+  padding-left: 18px;
+}
+
+.individual-option input {
+  margin-right: 5px;
+}
