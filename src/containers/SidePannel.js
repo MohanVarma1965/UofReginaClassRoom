@@ -47,17 +47,18 @@ class SidePannel extends React.Component {
           </Link>
         }
 
-        <Link to='/lecturerHomepage'>
-          <div className='sidePannel-item'> Lecturer Homepage</div>
-        </Link>
+        {this.props.auth.isLogged ?
+
+          <Link to='/lecturerHomepage'>
+            <div className='sidePannel-item'> Lecturer Homepage</div>
+          </Link>
+        : ""
+        }
 
         <Link to='/joinClassRoom'>
           <div className='sidePannel-item'> Join a Room</div>
         </Link>
 
-        <Link to='/lecturerHomepage'>
-          <div className='sidePannel-item'> About UoRClassRoom</div>
-        </Link>
       </div>
     );
   }
