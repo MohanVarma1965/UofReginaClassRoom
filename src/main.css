@@ -20,6 +20,7 @@ html, body, .root {
 .pannels-container {
   display: flex;
   flex-wrap: wrap;
+  min-height: 89.6%;
 }
 
 .mainPannel {
