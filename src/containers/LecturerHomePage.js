@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {FormGroup, Form, ControlLabel, FormControl, HelpBlock, Col, Button} from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
 import {Link, Redirect} from 'react-router';
-import {createRoom, getAllClasses, hostQuiz, endHostedQuiz, resetHostedQuiz} from '../actions/lecturerActions';
+import {createRoom, getAllClasses, hostQuiz, endHostedQuiz, resetHostedQuiz} from '../actions/lecturer';
 
 class LecturerHomePage extends React.Component {
 

@@ -6,8 +6,8 @@ import * as types from '../config/constants';
 import {ajaxCallError, beginAjaxCall} from './ajaxStatus';
 import {notify} from './notifications';
 import {providerLoginSuccess, userLoadedSuccess, userCreated} from './user';
-import {registrationCallError, registrationCallSuccess} from './registrationAction';
-import {loginCallError, loginCallSuccess} from './loginAction';
+import {registrationCallError, registrationCallSuccess} from './registration';
+import {loginCallError, loginCallSuccess} from './login';
 
 export function authInitializedDone() {
   return {

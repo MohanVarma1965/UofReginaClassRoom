@@ -2,7 +2,7 @@ import {push} from 'react-router-redux';
 import firebaseApi from '../api/firebase';
 import {beginAjaxCall} from './ajaxStatus';
 import {notify} from './notifications';
-import {classJoinCallSuccess} from '../actions/classRoomAction';
+import {classJoinCallSuccess} from './room';
 
 
 export function joinRoom(studentID, roomNumber) {

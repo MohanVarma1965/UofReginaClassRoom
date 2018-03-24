@@ -9,7 +9,7 @@ import {
   Button,
 } from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
-import {saveQuiz, deleteRoom} from '../actions/lecturerActions';
+import {saveQuiz, deleteRoom} from '../actions/lecturer';
 
 class CreateQuestion extends React.Component {
 

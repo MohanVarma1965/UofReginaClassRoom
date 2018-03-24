@@ -1,10 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router';
-import styled from 'styled-components';
 
 import {Row, Column} from 'hedron';
 
-const HomePage = () => {
+const NotFoundPage = () => {
   return (
     <Row>
       <Column style={{textAlign: 'center'}}>
@@ -14,4 +12,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default NotFoundPage;

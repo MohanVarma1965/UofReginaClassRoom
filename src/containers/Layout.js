@@ -2,7 +2,7 @@ import React from 'react';
 import {Page, Row, Column} from 'hedron';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import SidePannel from './SidePannel';
+import SidePannel from '../components/SidePannel';
 
 import Notifications from './Notifications';
 import {registerWithEmailPassword, signInwithEmailPassword, signOut} from '../actions/auth';
@@ -19,9 +19,9 @@ class Layout extends React.Component {
     const {auth, actions, loading, user} = this.props;
     return (
       <div className='layout-container'>
-        <PageHeader/>
+        <PageHeader />
         <div className='pannels-container'>
-          <SidePannel/>
+          <SidePannel  auth = {this.props.auth} />
           <div className='mainPannel'>
             {this.props.children}
           </div>

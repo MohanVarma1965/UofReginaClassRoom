@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, IndexRoute} from 'react-router';
 
-import NotFound from './containers/NotFoundPage';
+import NotFound from './components/NotFoundPage';
 import Layout from './containers/Layout';
 import Register from './containers/RegisterLink';
 import LoginWithEmailPassword from './containers/LoginWithEmailPassword';

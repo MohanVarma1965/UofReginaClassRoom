@@ -9,7 +9,7 @@ import {
   Radio
 } from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
-import {submitQuiz} from '../actions/studentActions';
+import {submitQuiz} from '../actions/student';
 
 class GetandAnswerQuestions extends React.Component {
 

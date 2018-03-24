@@ -9,7 +9,7 @@ import {
   Button,
 } from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
-import {joinRoom} from '../actions/studentActions';
+import {joinRoom} from '../actions/student';
 
 class JoinClassRoom extends React.Component {
 

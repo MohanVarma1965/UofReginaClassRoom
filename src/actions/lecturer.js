@@ -2,7 +2,7 @@ import {push} from 'react-router-redux';
 import firebaseApi from '../api/firebase';
 import {beginAjaxCall} from './ajaxStatus';
 import {notify} from './notifications';
-import {classCreationCallSuccess, getAllClassesCallSuccess} from '../actions/classRoomAction';
+import {classCreationCallSuccess, getAllClassesCallSuccess} from './room';
 
 
 export function createRoom(roomNumber) {
