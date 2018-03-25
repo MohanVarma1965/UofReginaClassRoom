@@ -1,8 +1,8 @@
-import React from 'react';
+ import React from 'react';
 import {connect} from 'react-redux';
 
 import {FormGroup, Form, ControlLabel, FormControl, HelpBlock, Col, Button} from 'react-bootstrap';
-import {registerWithEmailPassword, signOut} from "../actions/auth";
+import {registerWithEmailPassword} from "../actions/registration";
 import {bindActionCreators} from 'redux';
 
 class RegisterLink extends React.Component {
@@ -94,7 +94,6 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
       register: registerWithEmailPassword,
-      signOut,
     }, dispatch)
   };
 }

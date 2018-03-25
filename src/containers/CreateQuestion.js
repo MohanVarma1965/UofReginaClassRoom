@@ -191,8 +191,6 @@ CreateQuestion.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth,
-    user: state.user,
     currentClassRoom: state.classRoomReducer.currentClassRoom
   };
 }

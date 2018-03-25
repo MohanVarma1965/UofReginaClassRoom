@@ -70,10 +70,4 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({}, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ResultsPage);
+export default connect(mapStateToProps)(ResultsPage);

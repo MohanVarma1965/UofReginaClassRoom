@@ -39,19 +39,3 @@ export function submitQuiz(currentClassRoom, studentID, answers) {
       });
   };
 }
-
-export function deleteRoom(currentClassRoom) {
-  return (dispatch) => {
-    dispatch(beginAjaxCall());
-    return firebaseApi.deleteRoom(currentClassRoom)
-      .then((result) => {
-        dispatch(notify(`Your current class room ${currentClassRoom} is Deleted`));
-        dispatch(push('/lecturerHomepage'));
-
-      })
-      .catch(error => {
-        // dispatch(loginCallError(error));
-        // console.log(error);
-      });
-  };
-}

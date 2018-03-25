@@ -41,6 +41,7 @@ class SidePannel extends React.Component {
   }
 }
 
+
 SidePannel.propTypes = {
   auth: React.PropTypes.object,
 };

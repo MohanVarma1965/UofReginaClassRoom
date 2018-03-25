@@ -73,7 +73,7 @@ class JoinClassRoom extends React.Component {
 
 JoinClassRoom.propTypes = {
   actions: React.PropTypes.object.isRequired,
-  saveRoomAction: React.PropTypes.func.isRequired
+  joinRoom: React.PropTypes.func
 }
 
 function mapStateToProps(state) {

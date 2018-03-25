@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {FormGroup, Form, ControlLabel, FormControl, HelpBlock, Col, Button} from 'react-bootstrap';
-import {authLoggedInSuccess, hasLoginToken, signInwithEmailPassword, signOut} from "../actions/auth";
+import {FormGroup, Form, ControlLabel, FormControl, Col, Button} from 'react-bootstrap';
+import {signInwithEmailPassword} from "../actions/login";
 import {bindActionCreators} from 'redux';
 
 class LoginWithEmailPassword extends React.Component {
@@ -11,7 +11,6 @@ class LoginWithEmailPassword extends React.Component {
     this.loginSubmit = this.loginSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-
     this.state = {emailAddress: '', passwordValue: ''}
   }
 
@@ -57,7 +56,7 @@ class LoginWithEmailPassword extends React.Component {
 
         <FormGroup>
           <Col smOffset={2} sm={10}>
-            <Button className='uoRButton' type='submit'>Login </Button>
+            <Button className='uoRButton' type='submit'>Login</Button>
           </Col>
         </FormGroup>
 
@@ -69,15 +68,12 @@ class LoginWithEmailPassword extends React.Component {
 LoginWithEmailPassword.propTypes = {
   actions: React.PropTypes.object.isRequired,
   signInwithEmailPassword: React.PropTypes.func.isRequired,
-  signOut: React.PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth,
     loginStatus: state.loginReducer.loginStatus,
     loginError: state.loginReducer.loginError,
-    user: state.user,
   };
 }
 
@@ -85,7 +81,6 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
       signInwithEmailPassword,
-      signOut,
     }, dispatch)
   };
 }

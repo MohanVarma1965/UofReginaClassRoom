@@ -1,11 +1,8 @@
 import React from 'react';
-import {Page, Row, Column} from 'hedron';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import SidePannel from '../components/SidePannel';
 
 import Notifications from './Notifications';
-import {registerWithEmailPassword, signInwithEmailPassword, signOut} from '../actions/auth';
 
 import PageHeader from '../containers/PageHeader';
 
@@ -33,29 +30,14 @@ class Layout extends React.Component {
 }
 
 Layout.propTypes = {
-  actions: React.PropTypes.object.isRequired,
   auth: React.PropTypes.object.isRequired,
-  children: React.PropTypes.object,
-  loading: React.PropTypes.bool.isRequired,
-  user: React.PropTypes.object.isRequired,
+  children: React.PropTypes.object
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     auth: state.auth,
-    loading: state.ajaxCallsInProgress > 0,
-    user: state.user,
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({
-      register: registerWithEmailPassword,
-      signInwithEmailPassword: signInwithEmailPassword,
-      signOut,
-    }, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Layout);
+export default connect(mapStateToProps)(Layout);

@@ -6,8 +6,6 @@ import * as types from '../config/constants';
 import {ajaxCallError, beginAjaxCall} from './ajaxStatus';
 import {notify} from './notifications';
 import {providerLoginSuccess, userLoadedSuccess, userCreated} from './user';
-import {registrationCallError, registrationCallSuccess} from './registration';
-import {loginCallError, loginCallSuccess} from './login';
 
 export function authInitializedDone() {
   return {
@@ -72,37 +70,6 @@ export function authLoggedIn() {
   };
 }
 
-export function registerWithEmailPassword(email, password, displayName) {
-  return (dispatch) => {
-    dispatch(beginAjaxCall());
-    return firebaseApi.registerWithEmailPassword(email, password, displayName)
-      .then((result) => {
-        dispatch(registrationCallSuccess());
-      })
-      .catch(error => {
-        dispatch(registrationCallError(error));
-      });
-  };
-}
-
-
-export function signInwithEmailPassword(email, password) {
-  return (dispatch) => {
-    dispatch(beginAjaxCall());
-    return firebaseApi.signInwithEmailPassword(email, password)
-      .then((result) => {
-        localStorage.setItem("token", result.refreshToken);
-        //localStorage.setItem("token", result.credential.accessToken);
-        dispatch(loginCallSuccess());
-        dispatch(notify(`Welcome ${result.displayName}`));
-        dispatch(authLoggedIn());
-      })
-      .catch(error => {
-        dispatch(loginCallError(error));
-        //console.log(error);
-      });
-  };
-}
 
 export function signOut() {
   return (dispatch, getState) => {

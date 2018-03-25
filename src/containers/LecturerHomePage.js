@@ -132,9 +132,6 @@ LecturerHomePage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth,
-    loginStatus: state.loginReducer.loginStatus,
-    loginError: state.loginReducer.loginError,
     user: state.user,
     listOfAllClasses: state.classRoomReducer.listOfAllClasses
   };
