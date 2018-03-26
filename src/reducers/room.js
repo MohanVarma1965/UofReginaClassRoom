@@ -1,7 +1,7 @@
 import * as types from '../config/constants';
 import initialState from './initialState';
 
-export default function classRoomReducer(state = initialState.classRoom, action) {
+export default function room(state = initialState.classRoom, action) {
 
   switch (action.type) {
 
