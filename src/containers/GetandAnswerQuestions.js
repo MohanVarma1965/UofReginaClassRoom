@@ -114,11 +114,11 @@ GetandAnswerQuestions.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    questions: state.classJoinReducer.questions,
-    currentClassRoom: state.classJoinReducer.currentClassRoom,
-    studentID: state.classJoinReducer.studentID,
-    hosted: state.classJoinReducer.hosted,
-    endHostedQuiz: state.classJoinReducer.endHostedQuiz
+    questions: state.room.questions,
+    currentClassRoom: state.room.currentClassRoom,
+    studentID: state.room.studentID,
+    hosted: state.room.hosted,
+    endHostedQuiz: state.room.endHostedQuiz
   };
 }
 

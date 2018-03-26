@@ -133,7 +133,7 @@ LecturerHomePage.propTypes = {
 function mapStateToProps(state) {
   return {
     user: state.user,
-    listOfAllClasses: state.classRoomReducer.listOfAllClasses
+    listOfAllClasses: state.room.listOfAllClasses
   };
 }
 

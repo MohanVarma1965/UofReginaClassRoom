@@ -8,7 +8,7 @@ import routesPermissions from './routesPermissions';
 import user from './user';
 import registrationReducer from './registration';
 import loginReducer from './login';
-import classRoomReducer from './room';
+import room from './room';
 
 
 const rootReducer = combineReducers({
@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
   user,
   registrationReducer,
   loginReducer,
-  classRoomReducer,
+  room,
 });
 
 export default rootReducer;
