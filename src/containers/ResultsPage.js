@@ -66,7 +66,7 @@ ResultsPage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    listOfAllClasses: state.classRoomReducer.listOfAllClasses
+    listOfAllClasses: state.room.listOfAllClasses
   };
 }
 
