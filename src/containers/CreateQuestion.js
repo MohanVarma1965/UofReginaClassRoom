@@ -191,7 +191,7 @@ CreateQuestion.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    currentClassRoom: state.classRoomReducer.currentClassRoom
+    currentClassRoom: state.room.currentClassRoom
   };
 }
 
