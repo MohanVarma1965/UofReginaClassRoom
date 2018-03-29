@@ -92,7 +92,7 @@ class LecturerHomePage extends React.Component {
 
           <FormGroup>
             <Col smOffset={2} sm={10}>
-              <Button type='submit' className='uoRButton'> Create Room </Button>
+              <Button type='submit' className='uoRButton'> Create Classroom </Button>
             </Col>
           </FormGroup>
         </Form>
