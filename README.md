@@ -7,6 +7,10 @@ lecturer can join into the room to see the results in column chats. I have used 
 Redux to manage the application state. Redux communicates with Googles Firebase for authentication and also its NoSQL 
 data base to manage the state of application. For deployment and hosting I have used the Firebase Hosting.
 
+Click the below link to visit the hosted application
+
+https://uoreginaclassroom.firebaseapp.com/lecturerHomePage 
+
 The below structure gives you the complete idea of how the application is working
 
 ![alt text](https://github.com/MohanVarma1965/UofReginaClassRoom/blob/master/structure.PNG)
