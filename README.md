@@ -12,6 +12,10 @@ The below structure gives you the complete idea of how the application is workin
 ![alt text](https://github.com/MohanVarma1965/UofReginaClassRoom/blob/master/structure.PNG)
 
 
+The below gives the flow of React Redux
+
+![alt text](https://github.com/MohanVarma1965/UofReginaClassRoom/blob/master/ReactReduxFlow.gif)
+
 Lecturer use cases:  Creates a classroom and observe the results of the students.
 
 Preconditions:
@@ -24,7 +28,7 @@ a) Lecturer should end hosting so that no students answer after the stipulated t
 b) Lecturer can also reset the hosting if he wants to host the quiz again.
 c) Lecturer should get classrooms and click on each classroom to see the results.
 
-![alt text](https://github.com/MohanVarma1965/UofReginaClassRoom/blob/master/structure.PNG)
+![alt text](https://github.com/MohanVarma1965/UofReginaClassRoom/blob/master/Lecturer%20usecase.jpg)
 
 
 Student use case: Joining into his/her respective classroom.
@@ -33,4 +37,4 @@ Preconditions: Student has to know the classroom number to join.
 Post conditions: Student will join the room and attempt the quiz in that specific room.
 
 
-![alt text](https://github.com/MohanVarma1965/UofReginaClassRoom/blob/master/structure.PNG)
+![alt text](https://github.com/MohanVarma1965/UofReginaClassRoom/blob/master/student.jpg)
