@@ -9,7 +9,7 @@ data base to manage the state of application. For deployment and hosting I have 
 
 Click the below link to visit the hosted application
 
-https://uoreginaclassroom.firebaseapp.com/lecturerHomePage 
+https://uoreginaclassroom.firebaseapp.com/
 
 The below structure gives you the complete idea of how the application is working
 
