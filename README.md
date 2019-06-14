@@ -6,3 +6,6 @@ join with the class room number created by lecturer and answer the questions. Af
 lecturer can join into the room to see the results in column chats. I have used React for the front end view part and 
 Redux to manage the application state. Redux communicates with Googles Firebase for authentication and also its NoSQL 
 data base to manage the state of application. For deployment and hosting I have used the Firebase Hosting.
+
+
+![alt text](https://github.com/MohanVarma1965/UofReginaClassRoom/blob/master/structure.PNG)
