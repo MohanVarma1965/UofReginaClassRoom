@@ -72,7 +72,7 @@
     "chartkick": "^2.3.3",
     "emojione": "^2.2.6",
     "firebase": "^3.0.3",
-    "firebase-admin": "^5.11.0",
+    "firebase-admin": "^13.1.0",
     "hedron": "^0.3.0",
     "immutable": "^3.8.1",
     "node-uuid": "^1.4.7",
