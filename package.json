@@ -71,7 +71,7 @@
     "chart.js": "^2.7.2",
     "chartkick": "^2.3.3",
     "emojione": "^2.2.6",
-    "firebase": "^3.0.3",
+    "firebase": "^11.3.1",
     "firebase-admin": "^5.11.0",
     "hedron": "^0.3.0",
     "immutable": "^3.8.1",
